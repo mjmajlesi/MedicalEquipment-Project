@@ -16,12 +16,12 @@
 }
 
 *{
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--background-main);
   color: var(--text);
   height : 100vh;
