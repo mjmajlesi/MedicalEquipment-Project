@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import localFont from "next/font/local"
 import "./globals.css";
-import Navbar from "./_Components/Navbar";
+import Navbar from "../Components/Navbar";
 
 const vazirmatn = Vazirmatn({
   variable: "--font-main",
