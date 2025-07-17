@@ -2,5 +2,5 @@
 The Medical Equipment Web App for company
 
 ## Author
-Mohammad arshia Jafari & Mohammad javad Majlesi & Ashkan Azimi
+Mohammad arshia Jafari & Mohammad javad Majlesi & Ashkan Azimii
 
