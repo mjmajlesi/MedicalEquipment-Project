@@ -28,7 +28,7 @@ function Navbar() {
 
   return (
     <Container>
-      <div className={`${isNav ? "text-[#ededed] px-2 py-4 flex items-center justify-between" : "mb-6"}`}>
+      <div className={`${isNav ? "text-[#ededed] px-2 py-4 flex items-center justify-between" : "mb-4 px-2 py-4"}`}>
         <div className="p-2 not-md:w-full not-md:flex not-md:justify-between not-md:items-center">
           <Image className='rounded-2xl' src={Logo} alt='Logo' />
           { // <p className="font-semibold text-2xl "></p> 
@@ -44,7 +44,7 @@ function Navbar() {
         </div>
         <div className={` ${isNav ? "hidden" : "flex"}
         md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-10 items-center bg-gray-900
-        md:bg-transparent `}>
+        md:bg-transparent`}>
           {navs.map((nav, index) => (
             <Link className="hover:text-[#7FB2F3] text-[#ededed] 
             relative transition-all duration-300 ease-in-out hover:text-[18px]
@@ -55,7 +55,7 @@ function Navbar() {
         </div>
 
         <div className="Login max-md:hidden">
-          <Button className='bg-gradient-to-r from-[#023981] to-[#7FB2F3] transition delay-150 hover:scale-110 cursor-pointer' variant='login'>
+          <Button className='bg-gradient-to-r from-[#023981] to-[#7FB2F3]' variant='login'>
             <Link href={"/login"}>
               Login
             </Link>

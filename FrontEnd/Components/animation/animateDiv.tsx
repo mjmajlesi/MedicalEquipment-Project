@@ -5,18 +5,25 @@ import { useEffect, useState } from 'react'
 interface IAnimatedDiv {
   children: React.ReactNode,
   className?: string,
-  delay?: number
+  delay: number,
+  y?: number,
+  x?: number,
+  duration: number,
 }
 
-const AnimatedDiv = ({ children, className = "", delay = 0.7 }: IAnimatedDiv) => {
+const AnimatedDiv = (
+  { children, className = "", delay , y = 0, x = 0 ,
+    duration
+  }: IAnimatedDiv) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: y, x: x }}
       animate={{
         opacity: 1,
-        y: 1,
+        y: 0,
+        x: 0
       }}
-      transition = {{ delay: delay, duration: 2 }}
+      transition={{ delay: delay, duration: duration , ease: "easeInOut"}}
       className={className}
     >
       {children}

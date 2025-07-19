@@ -6,7 +6,7 @@ const AnimateType = ({text} : {text : string}) => {
     const letters = text.split("")
     const container = {
         visible: {
-            transition: { staggerChildren: 0.03 }
+            transition: { staggerChildren: 0.07, delayChildren: 0.1 }
         }
     }
     const child = {

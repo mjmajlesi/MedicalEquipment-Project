@@ -8,13 +8,12 @@ export default function SyringeModel(props: any) {
   const { scene } = useGLTF("/models/scene.gltf");
   const ref = useRef<THREE.Group>(null);
 
-  // تنظیمات انیمیشن
   const startY = -1;
   const endY = 0;
-  const targetRotation = 1.0; // حدود 45 درجه
-  const totalFrames = 200;
+  const targetRotation = 1.0;
+  const totalFrames = 150;
   const startScale = 0.9;
-  const endScale = 0.7;
+  const endScale = 0.8;
   const [frame, setFrame] = useState(0);
 
   useFrame(() => {
