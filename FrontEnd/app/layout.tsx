@@ -12,7 +12,7 @@ const vazirmatn = Vazirmatn({
 });
 
 const yekan = localFont({
-  src : "./font/w_Yekan.ttf",
+  src : "../font/w_Yekan.ttf",
   display: 'swap',
 })
 

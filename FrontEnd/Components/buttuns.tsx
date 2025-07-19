@@ -7,7 +7,7 @@ type Tchildren =  ComponentProps<"button"> & {
 }
 
 export default function Button({children , className , variant , ...root}:Tchildren) {
-  const styleButtun = "p-2 rounded-md "
+  const styleButtun = "p-2 rounded-md  transition-all hover:scale-113 duration-300 ease-in-out cursor-pointer"
   return (
     <button  {...root} className={`${styleButtun} ${className || ""}`}  style={{...Changevariant(variant)}}>{children}</button>
   )
