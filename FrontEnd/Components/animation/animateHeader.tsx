@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-interface IAnimatedDiv {
+export interface IAnimatedDiv {
   children: React.ReactNode,
   className?: string,
   delay: number,
