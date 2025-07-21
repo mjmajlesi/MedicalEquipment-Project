@@ -20,6 +20,10 @@ function Navbar() {
       name: "تماس با ما",
       link: "/contects"
     },
+        {
+      name: "درباره ما",
+      link: "/contects"
+    },
   ]
   const [isNav, SetIsNav] = useState(true);
   const toggleNav = () => {
@@ -28,7 +32,7 @@ function Navbar() {
 
   return (
     <Container>
-      <div className={`${isNav ? "text-[#ededed] px-2 py-4 flex items-center justify-between h-[100px] " : "h-[200px] p-2"}`}>
+      <div className={`${isNav ? "text-[#ededed] px-2 py-4 flex items-center justify-between h-[100px] " : "h-[250px] p-2"}`}>
         <div className="p-2 not-md:w-full not-md:flex not-md:justify-between not-md:items-center">
           <Image className='rounded-2xl' src={Logo} alt='Logo' />
           { // <p className="font-semibold text-2xl "></p> 
@@ -49,6 +53,7 @@ function Navbar() {
             <Link className="hover:text-[#7FB2F3] text-[#ededed] 
             relative transition-all duration-300 ease-in-out hover:text-[18px]
             font-semibold "
+            onClick={toggleNav}
               key={index} href={nav.link}>{nav.name}
             </Link>
           ))}
