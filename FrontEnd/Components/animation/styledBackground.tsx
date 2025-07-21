@@ -11,20 +11,20 @@ function StyledBackground() {
     )
 }
 export const DivtopBlur = styled.div`
-    position: absolute;
+    position: fixed;
     width: 25vw;
     height: 25vw;
-    min-width: 350px;
-    min-width: 350px;
+    min-width: 300px;
+    min-width: 300px;
     top: -128px;
-    left: 10vw;
+    left: 5vw;
     border-radius: 764px;
     background: rgba(25 , 55 , 109 , 0.7);
     filter: blur(100px);
     z-index: -1;
 `
 export const DivbotBlur = styled.div`
-    position: absolute;
+    position: fixed;
     width: 20vw;
     height: 20vw;
     min-width: 350px;

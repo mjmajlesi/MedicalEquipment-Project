@@ -1,8 +1,8 @@
 import React from 'react'
-import ThreeScene from './Threesence'
+import ThreeScene from './animation/Threesence'
 import Button from './buttuns'
 import Container from './Container'
-import AnimatedDiv from './animation/animateDiv'
+import AnimatedDiv from './animation/animateHeader'
 import AnimateType from './animation/animateType'
 import Link from 'next/link'
 import { GoArrowLeft } from "react-icons/go";
@@ -13,8 +13,8 @@ import LottieHeader from './animation/LottieHeader'
 function Header() {
     return (
         <Container>
-            <div className='header flex gap-12 items-center'>
-                <div className='flex flex-col items-center gap-8 w-full p-8 xl:w-1/3 xl:p-2 xl:items-start'>
+            <div className='header flex gap-12 items-start xl:items-center h-[calc(100vh-200px)] xl:h-[calc(100vh-100px)] '>
+                <div className='flex flex-col items-center gap-8 w-full px-4 py-2 xl:w-1/3 xl:p-2 xl:items-start'>
                     <AnimatedDiv
                         duration={2}
                         delay={0.2}

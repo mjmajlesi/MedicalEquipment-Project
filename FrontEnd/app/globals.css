@@ -24,5 +24,6 @@ body {
   padding: 0;
   background-color: var(--background-main);
   color: var(--text);
+  box-sizing: border-box;
   height : 100vh;
 }
