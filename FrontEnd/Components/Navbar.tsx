@@ -7,28 +7,18 @@ import Image from 'next/image'
 import Logo from "../public/favicon.ico"
 
 function Navbar() {
-  const navs = [
-    {
-      name: "خانه",
-      link: "/"
-    },
-    {
-      name: "محصولات",
-      link: "/products"
-    },
-    {
-      name: "تماس با ما",
-      link: "/contects"
-    },
-        {
-      name: "درباره ما",
-      link: "/contects"
-    },
-  ]
+  const navstyle = "hover:text-[#7FB2F3] text-[#ededed] relative transition-all duration-300 ease-in-out hover:text-[18px] font-semibold"
+  
   const [isNav, SetIsNav] = useState(true);
   const toggleNav = () => {
     SetIsNav(!isNav);
   }
+  const scrollSmooth = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <Container>
@@ -49,18 +39,14 @@ function Navbar() {
         <div className={` ${isNav ? "hidden" : "flex"}
         md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-10 items-center bg-gray-900
         md:bg-transparent`}>
-          {navs.map((nav, index) => (
-            <Link className="hover:text-[#7FB2F3] text-[#ededed] 
-            relative transition-all duration-300 ease-in-out hover:text-[18px]
-            font-semibold "
-            onClick={toggleNav}
-              key={index} href={nav.link}>{nav.name}
-            </Link>
-          ))}
+          <Link className={navstyle} href={"/"}>خانه</Link>
+          <Link className={navstyle} href={"/products"}>محصولات</Link>
+          <span className={`${navstyle} cursor-pointer`} onClick={() => scrollSmooth("Aboutme")}>درباره ما</span>
+          <Link className={navstyle} href={"/contact"}>تماس با ما</Link>
         </div>
 
         <div className="Login max-md:hidden">
-          <Button className='bg-gradient-to-r from-[#023981] to-[#7FB2F3]' variant='login'>
+          <Button className='bg-gradient-to-r from-[#023981] to-[#7FB2F3] rounded-md' variant='login'>
             <Link href={"/login"}>
               Login
             </Link>

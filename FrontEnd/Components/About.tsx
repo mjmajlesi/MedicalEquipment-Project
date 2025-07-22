@@ -5,10 +5,11 @@ import AnimateDivs from './animation/animateDivs';
 
 function About() {
     return (
+        <div id='Aboutme'>
         <Container>
-            <AnimateDivs duration={2} delay={0.3} y={100} className='about h-svh flex flex-col items-center justify-center gap-8 xl:gap-[100px]'>
+            <AnimateDivs duration={2} delay={0.3} y={-100} className='about h-svh flex flex-col items-center justify-center gap-8 xl:gap-[100px]'>
                 <div className='my-0 mx-auto w-fit'>
-                    <h1 className='font-bold text-[44px] p-4' >درباره ما</h1>
+                    <h1 className='font-bold text-[48px] p-4' >درباره ما</h1>
                 </div>
                 <div className='p-4 flex items-center justify-around gap-4'>
                     <div className=' p-6 flex flex-col items-start gap-12 leading-[30px] xl:w-1/2'>
@@ -39,7 +40,7 @@ function About() {
                 </div>
             </AnimateDivs >
         </Container>
-
+</div>
     )
 }
 

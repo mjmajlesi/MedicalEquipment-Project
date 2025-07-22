@@ -1,29 +1,31 @@
 import React, { ComponentProps } from 'react'
 
-type Tvariant = "dark" | "normal" | "login" | "seccece" | "danger"
+type Tvariant = "dark" | "normal" | "login" | "seccece" | "danger" | "normal-border"
 
-type Tchildren =  ComponentProps<"button"> & {
-  variant? : Tvariant
+type Tchildren = ComponentProps<"button"> & {
+  variant?: Tvariant
 }
 
-export default function Button({children , className , variant , ...root}:Tchildren) {
-  const styleButtun = "p-2 rounded-md  transition-all hover:scale-113 duration-300 ease-in-out cursor-pointer"
+export default function Button({ children, className, variant, ...root }: Tchildren) {
+  const styleButtun = "p-2  transition-all hover:scale-110 duration-300 ease-in-out cursor-pointer"
   return (
-    <button  {...root} className={`${styleButtun} ${className || ""}`}  style={{...Changevariant(variant)}}>{children}</button>
+    <button {...root} className={`${styleButtun} ${className || ""} ${Changevariant(variant)}`}>{children}</button>
   )
 }
 
 function Changevariant(variant? : Tvariant) {
   switch (variant) {
     case "normal":
-      return {backgroundColor : "#7FB2F3" , color : "black"}
+      return "bg-[#7FB2F3] text-black hover:bg-[#010211] hover:text-[#7FB2F3] hover:border-[#7FB2F3] border-1 "
+    case "normal-border":
+      return " bg-[#010211] text-[#7FB2F3]  border-[#7FB2F3] border-1 hover:bg-[#7FB2F3] hover:text-black"
     case "dark":
-      return {backgroundColor : "white" , color : "black"}
+      return "bg-white text-black"
     case "login":
-      return {backgroundColor : "#0d994d" , color : "white" , padding : "10px"}
-      case "seccece":
-      return {backgroundColor : "green" , color : "white" , padding : " 0 4px"}
-      case "danger":
-      return {backgroundColor : "red" , color : "white", padding : " 0 5px"}
+      return "bg-[#0d994d] text-white p-4"
+    case "seccece":
+      return "bg-green text-white"
+    case "danger":
+      return "bg-red text-white "
   }
   }
