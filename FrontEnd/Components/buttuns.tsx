@@ -22,7 +22,7 @@ function Changevariant(variant? : Tvariant) {
     case "dark":
       return "bg-white text-black"
     case "login":
-      return "bg-[#0d994d] text-white p-4"
+      return "bg-[#0d994d] text-white p-2"
     case "seccece":
       return "bg-green text-white"
     case "danger":
