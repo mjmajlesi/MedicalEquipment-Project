@@ -6,11 +6,11 @@ const AnimateType = ({text} : {text : string}) => {
     const letters = text.split("")
     const container = {
         visible: {
-            transition: { staggerChildren: 0.07, delayChildren: 0.1 }
+            transition: { staggerChildren: 0.04, delayChildren: 0.1 }
         }
     }
     const child = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 10 },
         visible: { opacity: 1, y: 0 }
     }
     return (

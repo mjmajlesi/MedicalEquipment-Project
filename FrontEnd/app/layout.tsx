@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
-import localFont from "next/font/local"
 import "./globals.css";
 import Logo from "../public/favicon.ico"
-
 import Navbar from "../Components/Navbar";
+import localFont from 'next/font/local';
 
-const vazirmatn = Vazirmatn({
-  variable: "--font-main",
-  subsets: ["latin"],
-});
-
-const yekan = localFont({
-  src : "../font/w_Yekan.ttf",
+const Vazirmatn = localFont({
+  src: [
+    { path: '../font/Vazirmatn-Regular.ttf', weight: '400' },
+    { path: '../font/Vazirmatn-Bold.ttf', weight: '700' },
+  ],
   display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
   title : {
@@ -41,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`${vazirmatn.className} antialiased`}
+        className={Vazirmatn.className}
       >
         <Navbar />
         {children}
