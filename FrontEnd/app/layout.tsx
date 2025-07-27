@@ -3,6 +3,7 @@ import "./globals.css";
 import Logo from "../public/favicon.ico"
 import Navbar from "../Components/Navbar";
 import localFont from 'next/font/local';
+import Footer from "@/Components/Footer";
 
 const Vazirmatn = localFont({
   src: [
@@ -41,6 +42,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
