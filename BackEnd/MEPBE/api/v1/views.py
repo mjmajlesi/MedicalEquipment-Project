@@ -2,10 +2,18 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
 from login.serializers import UserSerializer
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
 
+
+def get_tokens__for_user(user):
+    refresh = RefreshToken.for_user(user)
+    return {
+        'refresh' : str(refresh),
+        'access' : str(refresh.access_token)
+    }
 
 
 @api_view(['POST'])
@@ -34,6 +42,12 @@ def login_page(request):
     if user is not None:
         login(request, user)
         serializer = UserSerializer(user)
-        return Response({"mesage" : "Login successful", "user" : serializer.data}, status=status.HTTP_200_OK)
+        tokens = get_tokens__for_user(user)
+        return Response({
+            "mesage" : "Login successful", 
+            "user" : serializer.data,
+            "token" : tokens["access"],
+            "refresh" : tokens["refresh"]
+        }, status=status.HTTP_200_OK)
     else:
         return Response({"error" : "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
