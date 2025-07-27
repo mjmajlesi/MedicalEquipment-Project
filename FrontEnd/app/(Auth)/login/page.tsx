@@ -2,6 +2,7 @@
 import Button from "@/Components/buttuns";
 import Container from "@/Components/Container";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
     const [Error, SetError] = useState<string | null>(null);
     console.log(Email);
     console.log(Password);
+    const router = useRouter();
 
     const LoginUser = async () => {
         /* Controls errors */
@@ -36,8 +38,11 @@ function Login() {
         });
         const result = await data.json();
         console.log(result);
+        router.replace("/");
 
-        result.token && localStorage.setItem("token", result.token);
+        if (result.token) {
+            localStorage.setItem("token", result.token);
+        }
     };
 
     return (
