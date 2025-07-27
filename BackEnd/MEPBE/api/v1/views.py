@@ -1,7 +1,6 @@
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from login.models import User
 from rest_framework import status
 from login.serializers import UserSerializer
 from django.contrib.auth import authenticate, login
@@ -38,17 +37,3 @@ def login_page(request):
         return Response({"mesage" : "Login successful", "user" : serializer.data}, status=status.HTTP_200_OK)
     else:
         return Response({"error" : "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
-    
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def profile_page(request, slug):
-    try:
-        user = User.objects.get(slug=slug)
-    except User.DoesNotExist:
-        return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-    
-    if request.user != user and not request.user.is_staff:
-        return Response({"error" : "Permission denied"}, status=status.HTTP_403_FORBIDDEN)
-    serializer = UserSerializer(request.user)
-    return Response(serializer.data)
