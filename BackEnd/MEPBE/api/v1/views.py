@@ -21,8 +21,9 @@ def get_tokens__for_user(user):
 def sign_up_page(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
-        password = serializer.validated_data.get("password")
-        serializer.save(password=make_password(password))
+        user = serializer.save()
+        user.set_password(serializer.validated_data["password"])
+        user.save()
         return Response({"message" : "User created successfully"}, status=status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
