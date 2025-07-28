@@ -5,7 +5,7 @@ from django.utils.text import slugify
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = "___all__"
+        fields = "__all__"
         read_only_fields = ['slug']
         extra_kwargs = {
             "password" : {'write_only' : True}
