@@ -24,7 +24,11 @@ def sign_up_page(request):
         user = serializer.save()
         user.set_password(serializer.validated_data["password"])
         user.save()
-        return Response({"message" : "User created successfully"}, status=status.HTTP_201_CREATED)
+        tokens = get_tokens__for_user(user)
+        return Response({"message" : "User created and logged in successfully",
+                         "token" : tokens["access"],
+                         "refresh" : tokens["refresh"]
+        }, status=status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
@@ -45,8 +49,7 @@ def login_page(request):
         serializer = UserSerializer(user)
         tokens = get_tokens__for_user(user)
         return Response({
-            "mesage" : "Login successful", 
-            "user" : serializer.data,
+            "message" : "Login successful", 
             "token" : tokens["access"],
             "refresh" : tokens["refresh"]
         }, status=status.HTTP_200_OK)
