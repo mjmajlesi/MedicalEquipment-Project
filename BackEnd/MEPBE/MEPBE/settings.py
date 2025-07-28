@@ -132,7 +132,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # settings.py
 AUTH_USER_MODEL = 'login.User'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = [
+    "http://localhost:3000"
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
