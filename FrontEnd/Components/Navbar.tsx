@@ -8,7 +8,7 @@ import logo from "../public/Logo.png";
 
 function Navbar() {
     const navstyle =
-        "hover:text-[#7FB2F3] text-[#ededed] relative transition-all duration-300 ease-in-out hover:text-[18px] font-semibold";
+        "hover:text-[#7FB2F3] text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
 
     const [isNav, SetIsNav] = useState(true);
     const toggleNav = () => {
@@ -59,20 +59,21 @@ function Navbar() {
                     <Link className={navstyle} href={"/products"}>
                         محصولات
                     </Link>
-                    <span
-                        className={`${navstyle} cursor-pointer`}
+                    <span className={navstyle}
                         onClick={() => scrollSmooth("Aboutme")}
                     >
                         درباره ما
                     </span>
-                    <Link className={navstyle} href={"/contact"}>
+                    <span className={navstyle} 
+                        onClick={() => scrollSmooth("Contact")}
+                    >
                         تماس با ما
-                    </Link>
+                    </span>
                 </div>
 
-                <div className="Login max-md:hidden">
+                <div className="Login max-md:hidden ml-8">
                     <Button
-                        className="bg-gradient-to-r from-[#023981] to-[#7FB2F3] rounded-md"
+                        className="bg-gradient-to-r from-[#023981] to-[#7FB2F3] rounded-md p-3"
                         variant="login"
                     >
                         <Link href={"/login"}>Login</Link>

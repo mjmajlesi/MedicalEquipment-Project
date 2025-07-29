@@ -1,7 +1,14 @@
 "use client";
 import React from 'react'
 import {motion} from "framer-motion"
-import { IAnimatedDiv } from './animateHeader'
+
+interface IAnimatedDiv {
+    children : React.ReactNode
+    className : string
+    delay? : number
+    duration? : number
+    y : number
+}
 
 function AnimateDivs({
     children, className = "" , delay , duration = 0.6 , y

@@ -1,17 +1,15 @@
 import React from "react";
 import Button from "./buttuns";
 import Container from "./Container";
-import AnimateType from "./animation/animateType";
 import Link from "next/link";
 import { GoArrowLeft } from "react-icons/go";
 import LottieHeader from "./animation/LottieHeader";
-import AnimateDivs from "./animation/animateDivs";
-import ThreeScene from "./animation/Threesence";
+import { AnimateDivs, ThreeScene } from "./DynamicImport";
 
 function Header() {
   return (
     <Container>
-      <div className="header flex gap-12 items-start xl:items-center h-[calc(100vh-250px)] xl:h-[calc(100vh-100px)] ">
+      <div className="header flex gap-12 items-start px-4 xl:items-center h-[calc(100vh-250px)] xl:h-[calc(100vh-100px)] ">
         <div className="flex flex-col items-center gap-10 w-full py-2 xl:w-1/3 xl:p-2 xl:items-start mb-10">
           <AnimateDivs
             duration={1}
@@ -21,14 +19,21 @@ function Header() {
           >
             <LottieHeader />
           </AnimateDivs>
-          <h1 className="font-bold text-[36px] md:text-[40px]">
-            <AnimateType text="خرید تجهیزات آزمایشگاهی و ارائه خدمات و سرویس" />
-          </h1>
           <AnimateDivs
             className="flex flex-col gap-8"
-            duration={1}
+            duration={0.3}
             delay={0}
             y={10}
+          >
+            <h1 className="font-bold text-[36px] md:text-[40px]">
+              خرید تجهیزات پزشکی با بهترین کیفیت و ارائه سرویس و خدمات
+            </h1>
+          </AnimateDivs>
+          <AnimateDivs
+            className="flex flex-col gap-8"
+            duration={0.5}
+            delay={0.1}
+            y={15}
           >
             <h2 className="font-semibold text-[20px] text-gray-300">
               خرید تجهیزات پزشکی و آزمایشگاهی با بهترین قیمت و ارزان ترین قیمت

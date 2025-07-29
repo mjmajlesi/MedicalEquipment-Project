@@ -2,11 +2,11 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 import SyringeModel from "../animation/Syringe";
-import AnimateDivs from "./animateDivs";
+import { AnimateDivs } from "../DynamicImport";
 
 export default function ThreeScene() {
   return (
-    <AnimateDivs duration={0.8} className="h-[600px] w-full" delay={0.1}>
+    <AnimateDivs duration={0.8} className="h-[600px] w-full" delay={0.1} y={5}>
       <Canvas camera={{ position: [3.5, 1, 6], fov: 50 }}>
         <ambientLight intensity={1.2} />
         <directionalLight position={[10, 10, 5]} />
