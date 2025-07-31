@@ -6,7 +6,7 @@ type Tvariant =
   | "login"
   | "seccece"
   | "danger"
-  | "normal-border"
+  | "normal-nonbg"
   | "white";
 
 type Tchildren = ComponentProps<"button"> & {
@@ -20,7 +20,7 @@ export default function Button({
   ...root
 }: Tchildren) {
   const styleButtun =
-    "p-2  transition-all hover:scale-110 duration-300 ease-in-out cursor-pointer";
+    "p-2  transition-all hover:scale-105 duration-300 ease-in-out cursor-pointer";
   return (
     <button
       {...root}
@@ -34,9 +34,9 @@ export default function Button({
 function Changevariant(variant?: Tvariant) {
   switch (variant) {
     case "normal":
-      return "bg-[#7FB2F3] text-black hover:bg-[#010211] hover:text-[#7FB2F3] hover:border-[#7FB2F3] border-1 ";
-    case "normal-border":
-      return " bg-[#010211] text-[#7FB2F3]  border-[#7FB2F3] border-1 hover:bg-[#7FB2F3] hover:text-black";
+      return "text-[#ededed] outline-1 outline-[#7FB2F3] border-[#09090B] border-2 hover:border-none hover:outline-none ";
+    case "normal-nonbg":
+      return "text-[#ededed] hover:bg-gray-700";
     case "dark":
       return "bg-white text-black";
     case "white":

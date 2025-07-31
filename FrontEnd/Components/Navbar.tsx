@@ -26,7 +26,7 @@ function Navbar() {
             <div
                 className={`${
                     isNav
-                        ? "text-[#ededed] px-2 py-4 flex items-center justify-between h-[100px] "
+                        ? "text-[#ededed] px-2 py-4 flex items-center justify-between w-full h-[100px] "
                         : "h-[250px] p-2"
                 }`}
             >
@@ -73,10 +73,10 @@ function Navbar() {
 
                 <div className="Login max-md:hidden ml-8">
                     <Button
-                        className="bg-gradient-to-r from-[#023981] to-[#7FB2F3] rounded-md p-3"
-                        variant="login"
+                        className=" bg-gradient-to-br from-[#589AF6] to-[#275ADD] rounded-xl py-3 px-4"
+                        variant="normal"
                     >
-                        <Link href={"/login"}>Login</Link>
+                        <Link href={"/login"}>ورود</Link>
                     </Button>
                 </div>
             </div>
