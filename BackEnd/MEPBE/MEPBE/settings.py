@@ -144,3 +144,6 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = ["login.backends.EmailBackend"]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
