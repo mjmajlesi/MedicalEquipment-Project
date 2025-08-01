@@ -20,7 +20,7 @@ function CopiedButtun({text , className}: {text : string , className? : string})
   }
 return (
   <Button onClick={handleCopy} className={className}>
-    {isCopied ? 'Copied!' : <MdContentCopy size={20} color='#88888b' />}
+    {isCopied ? 'Copied!' : text}
   </Button>
 )
 };

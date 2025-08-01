@@ -5,7 +5,7 @@ import Container from "./Container";
 import Link from "next/link";
 import { GoArrowLeft } from "react-icons/go";
 import LottieHeader from "./animation/LottieHeader";
-import { AnimateDivs, ThreeScene } from "./DynamicImport";
+import { AnimateDivs} from "./DynamicImport";
 import SwiperComp from "./Swiper";
 
 function Header() {
