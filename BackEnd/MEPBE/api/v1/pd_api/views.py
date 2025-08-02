@@ -7,7 +7,7 @@ from Productsـdetails.serializers import ProductsdetailsSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def products_detail_page(request, id):
+def products_detail_page(request):
     products = Product.objects.all()
     serializer = ProductsdetailsSerializer(products, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
