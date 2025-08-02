@@ -1,1 +1,1 @@
-web: gunicorn BackEnd.MEPBE.wsgi
+web: gunicorn BackEnd.MEPBE.MEPBE.wsgi
