@@ -1,5 +1,5 @@
-from django.db import models
 from django.utils.text import slugify
+from django.db import models
 
 class Product(models.Model):
     title = models.CharField(max_length=255, unique=True)
@@ -9,14 +9,19 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        verbose_name = "product"
-        verbose_name_plural = "products"
-
     def __str__(self):
         return self.title
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            base_slug = slugify(self.title)
+            counter = 1
+            slug = f"{base_slug}-{counter}"
+
+            while Product.objects.filter(slug=slug).exists():
+                counter += 1
+                slug = f"{base_slug}-{counter}"
+
+            self.slug = slug
+
         super().save(*args, **kwargs)
