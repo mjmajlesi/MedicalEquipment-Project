@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     #MY_apps
     "login",
     "api",
-    "Productsـdetails",
+    "Products",
     "rest_framework"
 ]
 
