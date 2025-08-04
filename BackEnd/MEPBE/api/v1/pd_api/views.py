@@ -9,7 +9,7 @@ from Products.serializers import ProductsdetailsSerializer
 @permission_classes([AllowAny])
 def products_detail_list(request):
     products = Product.objects.all()
-    serializer = ProductsdetailsSerializer(products, many=True)
+    serializer = ProductsdetailsSerializer(products, many=True, context={"request" : request})
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
@@ -17,7 +17,7 @@ def products_detail_list(request):
 def products_detail_page(request, slug):
     try:
         product = Product.objects.get(slug=slug)
-        serializer = ProductsdetailsSerializer(product)
+        serializer = ProductsdetailsSerializer(product, context={"request" : request})
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Product.DoesNotExist:
         return Response({"error" : "Can't find product"}, status=status.HTTP_404_NOT_FOUND)
