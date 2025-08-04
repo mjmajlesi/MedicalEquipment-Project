@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "./Container";
+import Container from "../Container";
 import { IoAdd } from "react-icons/io5";
-import AnimateDivs from "./animation/animateDivs";
+import AnimateDivs from "../animation/animateDivs";
 
 function About() {
   const gradiantText = "bg-clip-text bg-gradient-to-r text-transparent from-[#023981] to-[#7FB2F3] "
@@ -79,7 +79,6 @@ function About() {
             >
               <ThreeScene />
             </AnimateDivs> */}
-            <span className="bg-[#3A3A41] h-[2px] w-2/3"></span>
         </AnimateDivs>
       </Container>
     </div>

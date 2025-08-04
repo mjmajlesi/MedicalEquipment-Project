@@ -1,7 +1,7 @@
-import About from "@/Components/About";
-import Contact from "@/Components/Contact";
-import Header from "@/Components/Header";
-import Products from "@/Components/Products";
+import About from "@/Components/About/About";
+import Contact from "@/Components/Contact/Contact";
+import Header from "@/Components/Header/Header";
+import Products from "@/Components/Product/Products";
 
 export default function Home() {
   return (

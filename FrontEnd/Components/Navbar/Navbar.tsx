@@ -1,12 +1,15 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import Button from "./buttuns";
-import Container from "./Container";
+import Button from "../buttuns";
+import Container from "../Container";
 import Image from "next/image";
-import logo from "../public/Logo.png";
+import logo from "../../public/Logo.png";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
+  const path = usePathname();
+
   const navstyle =
     "hover:text-[#7FB2F3] text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
 
@@ -53,6 +56,7 @@ function Navbar() {
         md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-10 items-center bg-gray-900
         md:bg-transparent`}
         >
+        {path == "/" ? <>
           <Link className={navstyle} href={"/"}>
             خانه
           </Link>
@@ -64,7 +68,15 @@ function Navbar() {
           </span>
           <span className={navstyle} onClick={() => scrollSmooth("Contact")}>
             تماس با ما
-          </span>
+          </span> </> : <>
+          <Link className={navstyle} href={"/"}>
+            خانه
+          </Link>
+          <Link className={navstyle} href={"/products"}>
+            محصولات
+          </Link>
+          </>
+}
         </div>
 
         <div className="Login max-md:hidden ml-8">

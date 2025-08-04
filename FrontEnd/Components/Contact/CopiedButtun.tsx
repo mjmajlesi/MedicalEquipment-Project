@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react'
-import Button from './buttuns';
+import Button from '../buttuns';
 import { MdContentCopy } from "react-icons/md";
 
 

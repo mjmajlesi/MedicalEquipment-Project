@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "./Container";
-import Button from "./buttuns";
+import Container from "../Container";
+import Button from "../buttuns";
 import { FaInstagram } from "react-icons/fa";
-import { Map } from "./DynamicImport";
+import { Map } from "../DynamicImport";
 
 function Footer() {
   return (
@@ -18,12 +18,12 @@ function Footer() {
             />
             <Button variant="login" className="px-3 rounded-xl bg-gradient-to-r from-[#1d1d9a] to-[#1e98d5] text-amber-50">جستجو</Button>
           </div>
-          <div className="footerMapContainer h-[200px] md:w-[200px] xl:w-[500px] not-md:hidden border-2  rounded-2xl my-8 ">
+          <div className="footerMapContainer h-[200px] md:w-[200px] xl:w-[500px] not-md:hidden border-2 my-8 ">
             <Map />
           </div>
         </div>
         <hr />
-        <div className="flex items-center justify-between my-5 ">
+        <div className="flex items-center justify-between my-5 pb-4 ">
           <span className="text-[#e6dede] lg:text-base text-[12px] ">تمامی حقوق متعلق به شرکت فروغ طب روناک سینا میباشد</span>
           {/* <span className="not-md:hidden">طراحی شده توسط محمد جواد مجلسی</span> */}
           <div className="media">

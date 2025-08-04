@@ -1,11 +1,10 @@
-"use client";
 import React from "react";
-import Button from "./buttuns";
-import Container from "./Container";
+import Button from "../buttuns";
+import Container from "../Container";
 import Link from "next/link";
 import { GoArrowLeft } from "react-icons/go";
-import LottieHeader from "./animation/LottieHeader";
-import { AnimateDivs} from "./DynamicImport";
+import LottieHeader from "../animation/LottieHeader";
+import { AnimateDivs} from "../DynamicImport";
 import SwiperComp from "./Swiper";
 
 function Header() {
