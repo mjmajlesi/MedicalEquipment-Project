@@ -105,29 +105,52 @@ Get a new access token using the refresh token.
 }
 ```
 
-## Backend Configuration
+---
 
-In your `settings.py`, make sure the following settings are added:
+## Product Management API
 
-```python
-INSTALLED_APPS = [
-    'rest_framework',
-    'corsheaders',
-    'login',  # your app name
-]
+The project includes a `Product` model for managing medical equipment data. Each product contains a title, description, image, and a unique slug. Images are stored in a dedicated `media/` folder inside the `Products` app.
 
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    ...
-]
+### Product API Endpoints
 
-AUTH_USER_MODEL = 'login.User'
+- `GET /api/products_detail/` – returns a list of all products
+- `GET /api/products_detail/<slug>/` – returns details of a single product
 
-CORS_ALLOW_ALL_ORIGINS = True  # Only for development
+The image URLs returned in the API response are full (absolute) URLs to allow frontend applications to directly display the images without additional processing.
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
-```
+---
+
+## Image URL Handling in Product API
+
+To ensure the frontend receives usable image URLs, the backend uses a custom serializer method that builds absolute image URLs using the current request context. This avoids returning relative paths like `/media/...` and instead returns full URLs like `https://yourdomain.com/media/...`.
+
+---
+
+## Media Settings
+
+In `settings.py`, media handling is configured as follows:
+
+- `MEDIA_URL = '/media/'`
+- `MEDIA_ROOT = os.path.join(BASE_DIR, 'Products/media')`
+
+Make sure the media folder exists and images are stored correctly for them to be accessible in the API responses.
+
+Also, `urls.py` includes settings to serve media files during development using `django.conf.urls.static.static`.
+
+---
+
+## Bulk Importing Product Data
+
+You can import multiple product entries from a `.csv` file (e.g., `details.csv`) that contains the following fields:
+
+- `title` — name of the product
+- `image` — name of the image file
+- `description` — brief product description
+
+Ensure that the referenced image files exist in the `Products/media/` directory.
+
+A utility script is used to read this CSV, generate unique slugs, and bulk-create product entries in the database.
+
+---
+
+✅ With this structure, the product management functionality is modular, frontend-friendly, and ready for scalable use.
