@@ -29,7 +29,7 @@ function Navbar() {
       <div
         className={`${
           isNav
-            ? "text-[#ededed] px-2 py-4 flex items-center justify-between w-full h-[100px] "
+            ? "text-[#ededed] px-2 py-4 flex items-center justify-around w-full h-[80px] "
             : "h-[250px] p-2"
         }`}
       >
@@ -53,7 +53,7 @@ function Navbar() {
         </div>
         <div
           className={` ${isNav ? "hidden" : "flex"}
-        md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-10 items-center bg-gray-900
+        md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-8 items-center bg-gray-900
         md:bg-transparent`}
         >
         {path == "/" ? <>
@@ -79,10 +79,10 @@ function Navbar() {
 }
         </div>
 
-        <div className="Login max-md:hidden ml-8">
+        <div className="Login max-md:hidden">
           <Button
-            className=" bg-gradient-to-br from-[#589AF6] to-[#275ADD] rounded-xl py-3 px-4"
-            variant="normal"
+            className="rounded-xl py-3 px-6"
+            variant="dark"
           >
             <Link href={"/login"}>ورود</Link>
           </Button>

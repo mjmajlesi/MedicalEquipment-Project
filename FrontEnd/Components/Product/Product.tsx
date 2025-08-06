@@ -9,7 +9,7 @@ export interface IProducts {
 }
 
 async function Product({id} : {id : number}) {
-  const res = await fetch("https://medicalequipment-project.onrender.com/api/v1/products_detail");
+  const res = await fetch(`${process.env.BASE_URL}/api/v1/products_detail`);
   const data = await res.json();
   return (
     <>
