@@ -8,6 +8,7 @@ django.setup()
 
 import csv
 from Products.models import Product
+from django.utils.text import slugify
 
 existing_slugs = set(Product.objects.values_list("slug", flat=True))
 
@@ -24,17 +25,18 @@ with open('/mnt/tempdisk/MedicalEquipment-Project/MedicalEquipment-Project/BackE
     reader = csv.DictReader(csvfile)
     products = []
 
-    base_slug = "product"
-
     for row in reader:
         title = row["title"].strip()
-
+        base_slug = slugify(title)
         unique_slug = generate_unique_slug(base_slug, existing_slugs)
+
+        image_filename = row["image"].strip()  
+        image_path = f"images/{image_filename}"  
 
         products.append(Product(
             title=title,
             description=row["description"],
-            image=row["image"],
+            image=image_path,
             slug=unique_slug
         ))
 
