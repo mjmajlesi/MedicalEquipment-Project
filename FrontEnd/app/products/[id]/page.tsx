@@ -24,7 +24,7 @@ async function ProductPage(props: Iparams) {
         <div className="flex flex-col lg:flex-row items-center justify-around h-screen">
           <div>
             <img
-              src="https://medicalequipment-project.onrender.com/media/Angiography_vest_skirt.jpg"
+              src={data.image}
               alt={data.title}
               className="w-[330px] h-[350px] object-cover rounded-[32px]"
             />
