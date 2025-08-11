@@ -25,6 +25,7 @@ def sign_up_page(request):
         user.save()
         tokens = get_tokens__for_user(user)
         return Response({"message" : "User created and logged in successfully",
+                         "username" : user.username,
                          "token" : tokens["access"],
                          "refresh" : tokens["refresh"]
         }, status=status.HTTP_201_CREATED)
@@ -49,6 +50,7 @@ def login_page(request):
         tokens = get_tokens__for_user(user)
         return Response({
             "message" : "Login successful", 
+            "username" : user.username,
             "token" : tokens["access"],
             "refresh" : tokens["refresh"]
         }, status=status.HTTP_200_OK)
