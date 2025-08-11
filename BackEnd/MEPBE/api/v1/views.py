@@ -5,7 +5,6 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from login.serializers import UserSerializer
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.hashers import make_password
 
 
 def get_tokens__for_user(user):
@@ -54,4 +53,4 @@ def login_page(request):
             "refresh" : tokens["refresh"]
         }, status=status.HTTP_200_OK)
     else:
-        return Response({"error" : "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({"error" : "انگار شما هنوز ثبت نام نکرده اید"}, status=status.HTTP_401_UNAUTHORIZED)
