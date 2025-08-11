@@ -162,3 +162,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'Products/media')
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000"
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://medicalequipment-project.onrender.com'
+]
