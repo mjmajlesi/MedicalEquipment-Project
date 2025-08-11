@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import Pattern from "../../../public/pattern-c.svg";
+import Pattern from "../../../public/Pattern.png";
+import AnimateDivs from "@/Components/animation/animateDivs";
 
 function Login() {
   const [Email, SetEmail] = useState<string>();
@@ -50,11 +51,17 @@ function Login() {
   return (
     <Container>
       <div className="flex items-center justify-around h-screen">
-        <div>
-          <Image src={Pattern} alt="Pattren" height={700} />
-        </div>
-        <div className="flex flex-col w-full md:w-2/3 xl:w-1/3 xl:mx-1 p-2 ">
-          <span className="font-bold text-3xl text-amber-50 text-center ">صفحه ورود</span>
+        <AnimateDivs className="" y={20} duration={1.5}>
+          <Image src={Pattern} alt="Pattren" height={500} />
+        </AnimateDivs>
+        <AnimateDivs
+          y={20}
+          duration={1.5}
+          className="flex flex-col w-full md:w-2/3 xl:w-1/3 xl:mx-1 p-2 "
+        >
+          <span className="font-bold text-3xl text-amber-50 text-center ">
+            صفحه ورود
+          </span>
           <div className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
             <input
               type="email"
@@ -95,7 +102,7 @@ function Login() {
               </Link>
             </p>
           </div>
-        </div>
+        </AnimateDivs>
       </div>
     </Container>
   );
