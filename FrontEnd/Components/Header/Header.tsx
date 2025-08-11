@@ -4,8 +4,8 @@ import Container from "../Container";
 import Link from "next/link";
 import { GoArrowLeft } from "react-icons/go";
 import LottieHeader from "../animation/LottieHeader";
-import { AnimateDivs} from "../DynamicImport";
-import SwiperComp from "./Swiper";
+import { gradiantText } from "../About/About";
+import AnimateDivs from "../animation/animateDivs";
 
 function Header() {
   return (
@@ -22,13 +22,12 @@ function Header() {
             <LottieHeader />
           </AnimateDivs>
           <AnimateDivs className="" duration={1.5} delay={0.2} y={20}>
-            <h1 className="max-w-3xl bg-gradient-to-r from-[rgba(255,255,255,0.4)] via-white to-[rgba(255,255,255,0.4)] bg-clip-text lg:leading-20 text-center text-4xl font-bold text-transparent sm:leading-tight md:text-[60px]">
-              خرید تجهیزات پزشکی با بهترین کیفیت و ارائه سرویس و خدمات
+            <h1 className={`max-w-3xl ${gradiantText} lg:leading-20 text-center text-4xl font-bold text-transparent sm:leading-tight md:text-[60px]`}>
+              تفاوت را با خدمات صادقانه ما در حوزه پزشکی تجربه کنید
             </h1>
           </AnimateDivs>
-          <div className="flex flex-col items-center justify-center gap-6">
-            <AnimateDivs
-              className="flex flex-col items-center gap-8"
+          <AnimateDivs
+              className="flex flex-col items-center justify-center gap-6"
               duration={1}
               delay={0.2}
               y={25}
@@ -38,7 +37,6 @@ function Header() {
                 بهترین کیفیت، نو و دست دوم با قیمت های مناسب برای معرفی بیشتر
                 محصولات می توانید به صفحه محصولات مراجعه کنید.
               </h2>
-            </AnimateDivs>
             <AnimateDivs
               duration={1}
               delay={0.4}
@@ -62,16 +60,8 @@ function Header() {
                 <Link href={"/products"}>ارتباط با ما</Link>
               </Button>
             </AnimateDivs>
-          </div>
+          </AnimateDivs>
         </div>
-        {/* <AnimateDivs
-          duration={1}
-          delay={0.3}
-          y={25}
-          className="pl-8 not-xl:hidden"
-        >
-          <SwiperComp />
-        </AnimateDivs> */}
       </div>
       {/* <div
         className="fixed w-[25vw] h-[25vw] min-w-[100px] top-[-100px] left-[5vw] rounded-[746px]

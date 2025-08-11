@@ -7,24 +7,33 @@ import { MdPhoneIphone } from "react-icons/md";
 import { PiMapPinAreaBold } from "react-icons/pi";
 import image1 from "../../public/images/image1.jpg";
 import Image from "next/image";
+import { gradiantText } from "../About/About";
+import ScrollDivAnime from "../animation/ScrollDivAnime";
 
 function Contact() {
   return (
     <div id="Contact">
       <Container>
         <AnimateDivs
-          duration={1.5}
-          delay={0.1} 
-          y={10}
-          className="about h-svh flex flex-col items-center justify-center gap-8 xl:gap-[50px]"
+          duration={1}
+          delay={0.1}
+          y={20}
+          className="about h-svh flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
         >
-          <div className="my-0 flex items-center gap-4 w-full lg:gap-8 lg:w-5/6">
-            <h1 className="bg-clip-text bg-gradient-to-r w-[300px] text-transparent from-[#023981] to-[#7FB2F3] font-bold text-[32px] lg:text-[48px]">
-              تماس با ما
-            </h1>
-            <span className="bg-[#3A3A41] h-[2px] w-full"></span>
-          </div>
-          <div className="flex items-center gap-12 w-full mx-5 lg:w-5/6">
+          <ScrollDivAnime text="تماس با ما" />
+          <div className="flex items-center gap-8 w-full mx-5 lg:w-10/12">
+            <div className="flex flex-col items-center gap-10 w-full">
+              <h2 className="lg:text-3xl text-2xl font-semibold ">تاریخچه شرکت</h2>
+              <p className="w-full text-[19px]">
+                بنیانگذاران شرکت فروغ طب با تجربه چند دهه فعالیت در حوزه خدمات
+                پزشکی و بیمارستانی برآن شدند تا با تاسیس شرکت فروغ طب روناک سینا
+                در سال 1398، فعالیت های خود را در مجموعه های بیمارستانی متمرکز
+                کرده و طی این مدت به موفقیت های خوبی در این حوزه دست یافته اند.
+                اینک با هدف گسترش خدمات بیمارستانی در زمینه گاز های طبی و
+                نگهداشت دستگاه های اکسیژن ساز و نیز خدمات ایزولاسیون مراکز
+                تصویربرداری افق های روشنی را برای آینده ترسیم کرده ایم.
+              </p>
+            </div>
             <div className="GroupCards flex flex-col items-center gap-8 lg:gap-10 w-full">
               <div className="flex flex-col lg:flex-row justify-between w-full gap-6">
                 <div className="flex justify-center gap-2 items-center bg-gray-600 px-8 py-4 rounded-2xl">
@@ -50,7 +59,6 @@ function Contact() {
                 <PiMapPinAreaBold size={80} color="#88888b" />
               </div>
             </div>
-              <Image src={image1} alt="imageContext" className="not-md:hidden rounded-3xl h-[500px] w-full" />
           </div>
         </AnimateDivs>
       </Container>
