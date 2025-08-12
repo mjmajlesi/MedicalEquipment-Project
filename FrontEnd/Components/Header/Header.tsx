@@ -12,7 +12,7 @@ function Header() {
   return (
     <div className="lg:bg-no-repeat lg:bg-[url('/Desktop.png')] bg-none lg:[background-position:center_-150px]">
     <Container>
-      <div className="header flex justify-center px-4 h-[calc(100vh-250px)] lg:h-screen">
+      <div className="header flex justify-center px-4 h-[calc(100vh-100px)] lg:h-screen">
         <div className="flex flex-col items-center justify-start gap-6 w-full py-2 xl:p-2 mt-16">
           <AnimateDivs
             duration={1.5}
@@ -33,7 +33,7 @@ function Header() {
               delay={0.2}
               y={25}
             >
-              <h2 className="my-6 max-w-xl text-[#ffffff] text-center text-base lg:text-[20px] leading-relaxed md:text-xl md:leading-[34px] line-clamp-3">
+              <h2 className="my-6 max-w-xl text-[#ffffff] text-center text-base lg:text-[20px] leading-relaxed md:text-xl md:leading-[34px] line-clamp-4">
                 خرید تجهیزات پزشکی و آزمایشگاهی با بهترین قیمت و ارزان ترین قیمت
                 بهترین کیفیت، نو و دست دوم با قیمت های مناسب برای معرفی بیشتر
                 محصولات می توانید به صفحه محصولات مراجعه کنید.

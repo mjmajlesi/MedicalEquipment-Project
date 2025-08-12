@@ -47,7 +47,7 @@ function About() {
                   className="flex items-center gap-2 flex-nowrap"
                 >
                   <IoAdd size={35} color="#7FB2F3" />
-                  <span className="font-semibold transition-all line-clamp-1 duration-300 ease-in-out hover:text-[18px]">
+                  <span className="font-semibold text-[14px] md:text-[16px] transition-all line-clamp-1 duration-300 ease-in-out md:hover:text-[18px]">
                     نماینده رسمی شرکت رئوف در استان همدان
                   </span>
                 </AnimateDivs>
@@ -58,7 +58,7 @@ function About() {
                   className="flex items-center gap-2 flex-nowrap"
                 >
                   <IoAdd size={35} color="#7FB2F3" />
-                  <span className="font-semibold transition-all line-clamp-1 duration-300 ease-in-out  hover:text-[18px]">
+                  <span className="font-semibold text-[14px] md:text-[16px] transition-all line-clamp-1 duration-300 ease-in-out  md:hover:text-[18px]">
                     دارای رابطه تجاری با بیش از 30 بیمارستان و مرکز درمانی استان
                     همدان
                   </span>
@@ -70,7 +70,7 @@ function About() {
                   className="flex items-center gap-2 flex-nowrap"
                 >
                   <IoAdd size={35} color="#7FB2F3" />
-                  <span className="font-semibold transition-all line-clamp-1 duration-300 ease-in-out  hover:text-[18px]">
+                  <span className="font-semibold text-[14px] md:text-[16px] transition-all line-clamp-1 duration-300 ease-in-out  md:hover:text-[18px]">
                     همکار شرکت های تولید کننده تجهیزات گاز های طبی
                   </span>
                 </AnimateDivs>

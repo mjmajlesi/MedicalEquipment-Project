@@ -21,7 +21,7 @@ function AnimateDivs({
                 y: 1,
                 transition: { delay: delay, duration: duration },
             }}
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: false, amount: 0.05 }}
             className={className}
         >
             {children}
