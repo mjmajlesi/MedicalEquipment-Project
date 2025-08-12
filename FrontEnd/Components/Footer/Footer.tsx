@@ -7,7 +7,7 @@ import { Map } from "../DynamicImport";
 function Footer() {
   return (
     <Container>
-        <div className="footerTop flex items-end justify-between">
+        <div className="footerTop flex items-end justify-between mt-24">
           <div className="Search w-full not-md:px-4 lg:w-[450px] flex items-center gap-4 my-8">
             <input
               type="text"

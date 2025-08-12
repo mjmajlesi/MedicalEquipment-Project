@@ -14,8 +14,8 @@ function Contact() {
         <AnimateDivs
           duration={1}
           delay={0.1}
-          y={20}
-          className="about h-svh flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
+          y={10}
+          className="about flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
         >
           <ScrollDivAnime text="تماس با ما" />
           <div className="flex items-center flex-col lg:flex-row gap-8 w-full mx-5 lg:w-10/12">

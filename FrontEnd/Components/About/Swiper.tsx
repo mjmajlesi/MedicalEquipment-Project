@@ -30,7 +30,7 @@ function SwiperComp() {
           crossFade: true,
         }}
 
-        className="mySwiper w-[350px] h-[200px] lg:h-[300px] lg:w-[550px] rounded-2xl"
+        className="mySwiper w-[300px] sm:w-[350px] h-[200px] lg:h-[300px] lg:w-[550px] rounded-2xl"
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>

@@ -5,12 +5,12 @@ import Products from "@/Components/Product/Products";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col gap-24">
       <Header />
       <About />
       <Products />
       <Contact />
-    </>
+    </div>
   );
 }
 

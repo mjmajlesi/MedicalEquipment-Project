@@ -11,10 +11,10 @@ function Products() {
     <div id="Products">
       <Container>
         <AnimateDivs
-          duration={1}
+          duration={0.75}
           delay={0}
-          y={20}
-          className="min-h-screen flex flex-col items-center md:justify-center gap-6 lg:gap-12"
+          y={10}
+          className="flex flex-col items-center md:justify-center gap-8 lg:gap-16"
         >
           <ScrollDivAnime text="محصولات" />
           <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 xl:gap-12">

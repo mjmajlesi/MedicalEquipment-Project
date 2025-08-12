@@ -19,7 +19,7 @@ async function Product({id} : {id : number}) {
           product.id <= id && (
             <div
               key={product.id}
-              className="relative w-[350px] h-[500px] lg:h-[570px] rounded-[42px] bg-[#f2f2f7] px-2.5 pt-2.5"
+              className="relative w-[300px] sm:w-[350px] h-[480px] sm:h-[500px] lg:h-[570px] rounded-[42px] bg-[#f2f2f7] px-2.5 pt-2.5"
             >
               <Image  
                 src={product.image}
@@ -27,7 +27,7 @@ async function Product({id} : {id : number}) {
                 width={330}
                 height={330}
                 priority
-                className="w-[330px] h-[330px] lg:h-[350px] object-cover rounded-[32px]"
+                className="sm:w-[330px] w-[280px] sm:h-[330px] h-[300px] lg:h-[350px] object-cover rounded-[32px]"
               />
               <div className="flex flex-col gap-4">
                 <h3 className="font-bold text-black text-[20px] lg:text-[24px] mt-5 line-clamp-1">

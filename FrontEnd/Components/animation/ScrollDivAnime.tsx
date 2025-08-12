@@ -10,7 +10,7 @@ function ScrollDivAnime({text} : {text : string}) {
   return (
     <div
       ref={ref}
-      className="flex items-center justify-center w-full lg:w-10/12 mx-auto gap-8"
+      className="flex items-center justify-center w-full lg:w-10/12 mx-auto gap-4 lg:gap-8"
     >
       {/* خط چپ */}
       <motion.span

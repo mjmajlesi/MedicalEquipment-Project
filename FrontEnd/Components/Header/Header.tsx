@@ -23,7 +23,7 @@ function Header() {
             <LottieHeader />
           </AnimateDivs>
           <AnimateDivs className="" duration={1.5} delay={0.2} y={20}>
-            <h1 className={`max-w-3xl ${gradiantText} lg:leading-20 text-center text-4xl font-bold text-transparent sm:leading-tight md:text-[60px]`}>
+            <h1 className={`max-w-3xl ${gradiantText} lg:leading-20 text-center text-3xl sm:text-4xl font-bold text-transparent sm:leading-tight md:text-[60px]`}>
               تفاوت را با خدمات صادقانه ما در حوزه پزشکی تجربه کنید
             </h1>
           </AnimateDivs>
@@ -33,7 +33,7 @@ function Header() {
               delay={0.2}
               y={25}
             >
-              <h2 className="my-6 max-w-xl text-[#ffffff] text-center text-base lg:text-[20px] leading-relaxed md:text-xl md:leading-[34px]">
+              <h2 className="my-6 max-w-xl text-[#ffffff] text-center text-base lg:text-[20px] leading-relaxed md:text-xl md:leading-[34px] line-clamp-3">
                 خرید تجهیزات پزشکی و آزمایشگاهی با بهترین قیمت و ارزان ترین قیمت
                 بهترین کیفیت، نو و دست دوم با قیمت های مناسب برای معرفی بیشتر
                 محصولات می توانید به صفحه محصولات مراجعه کنید.
@@ -46,19 +46,19 @@ function Header() {
             >
               <Button
                 variant="dark"
-                className="sm:px-4 sm:py-3 rounded-xl p-3 xl:text-[18px]"
+                className="sm:px-4 sm:py-3 rounded-xl p-1 xl:text-[18px]"
               >
                 <Link href={"/products"}>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-[2px] sm:gap-2">
                     <span>مشاهده محصولات</span>
                     <GoArrowLeft size={20} className="text-[#000000]" />
                   </div>
                 </Link>
               </Button>
               <Button
-                className="sm:px-4 sm:py-3 rounded-md p-3 xl:text-[18px] bg-[#414141]"
+                className="sm:px-4 sm:py-3 rounded-md p-1 xl:text-[18px] bg-[#414141]"
               >
-                <Link href={"/products"}>ارتباط با ما</Link>
+                <Link href={"/"}>ارتباط با ما</Link>
               </Button>
             </AnimateDivs>
           </AnimateDivs>
