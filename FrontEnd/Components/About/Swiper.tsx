@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
+import { EffectFade, Autoplay } from "swiper/modules";
 import Image from "next/image";
 const images = [
   { src: "/images/image1.jpg", alt: "سرویس دهی تجهیزات پزشکی" },
@@ -30,7 +30,7 @@ function SwiperComp() {
           crossFade: true,
         }}
 
-        className="mySwiper w-[550px] h-[300px] rounded-2xl"
+        className="mySwiper w-[350px] h-[200px] lg:h-[300px] lg:w-[550px] rounded-2xl"
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>

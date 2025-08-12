@@ -1,5 +1,6 @@
 import Container from "@/Components/Container";
 import { IProducts } from "@/Components/Product/Product";
+import Image from "next/image";
 import React from "react";
 
 interface Iparams {
@@ -16,16 +17,18 @@ async function ProductPage(props: Iparams) {
     return (
       <h1>اوه انگار مشکلی پیش امده و محصول انتخابی شما در سایت وجود نداره!</h1>
     );
-  const data : IProducts = await res.json();
+  const data: IProducts = await res.json();
 
   return (
     <>
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-around h-screen">
           <div>
-            <img
+            <Image
               src={data.image}
               alt={data.title}
+              width={330}
+              height={350}
               className="w-[330px] h-[350px] object-cover rounded-[32px]"
             />
           </div>

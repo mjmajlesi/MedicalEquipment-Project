@@ -4,7 +4,6 @@ import { IoAdd } from "react-icons/io5";
 import AnimateDivs from "../animation/animateDivs";
 import ScrollDivAnime from "../animation/ScrollDivAnime";
 import SwiperComp from "./Swiper";
-import Button from "../buttuns";
 
 export const gradiantText =
   "bg-gradient-to-r from-[rgba(255,255,255,0.4)] via-white to-[rgba(255,255,255,0.4)] bg-clip-text ";
@@ -20,7 +19,7 @@ function About() {
           className="about h-svh flex flex-col items-center justify-center gap-10 xl:gap-[100px]"
         >
           <ScrollDivAnime text="درباره ما" />
-          <div className="flex items-center gap-16 xl:w-10/12">
+          <div className="flex items-center flex-col lg:flex-row gap-16 xl:w-10/12">
             <div className="flex flex-col items-start p-2 gap-8 leading-[30px] ">
               <AnimateDivs
                 duration={1.5}
@@ -81,7 +80,7 @@ function About() {
               duration={1}
               delay={0.3}
               y={25}
-              className="not-xl:hidden"
+              className=""
             >
               <SwiperComp />
             </AnimateDivs>

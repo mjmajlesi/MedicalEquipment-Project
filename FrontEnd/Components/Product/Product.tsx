@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -18,18 +19,21 @@ async function Product({id} : {id : number}) {
           product.id <= id && (
             <div
               key={product.id}
-              className="relative w-[350px] h-[450px] lg:h-[570px] rounded-[42px] bg-[#f2f2f7] px-2.5 pt-2.5"
+              className="relative w-[350px] h-[500px] lg:h-[570px] rounded-[42px] bg-[#f2f2f7] px-2.5 pt-2.5"
             >
-              <img  
+              <Image  
                 src={product.image}
                 alt={product.title}
+                width={330}
+                height={330}
+                priority
                 className="w-[330px] h-[330px] lg:h-[350px] object-cover rounded-[32px]"
               />
               <div className="flex flex-col gap-4">
                 <h3 className="font-bold text-black text-[20px] lg:text-[24px] mt-5 line-clamp-1">
                   {product.title}
                 </h3>
-                <span className="line-clamp-2 text-[14px] text-black opacity-60">
+                <span className="lg:line-clamp-2 text-[14px] text-black opacity-60 line-clamp-1 ">
                   {product.description}
                 </span>
                 <button className="absolute bottom-4 right-2 left-2 bg-[#000000] px-5 py-2.5 rounded-[80px] text-white font-semibold cursor-pointer hover:scale-105 transition-all duration-300 ">

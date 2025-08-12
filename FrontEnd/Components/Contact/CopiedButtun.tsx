@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from 'react'
 import Button from '../buttuns';
-import { MdContentCopy } from "react-icons/md";
-
 
 function CopiedButtun({text , className}: {text : string , className? : string}) {
   const [isCopied , setIsCopied] = useState<boolean>(false);

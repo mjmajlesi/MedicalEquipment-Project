@@ -72,7 +72,7 @@ if (result.token && result.refresh) {
     <Container>
       <div className="flex items-center justify-around h-screen">
         <AnimateDivs className="" y={20} duration={1.5}>
-          <Image src={Pattern} alt="Pattren" height={500} />
+          <Image src={Pattern} alt="Pattren" height={500} width={500} />
         </AnimateDivs>
         <AnimateDivs
           y={20}

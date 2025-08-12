@@ -5,9 +5,6 @@ import { PiPhoneFill } from "react-icons/pi";
 import CopiedButtun from "../Contact/CopiedButtun";
 import { MdPhoneIphone } from "react-icons/md";
 import { PiMapPinAreaBold } from "react-icons/pi";
-import image1 from "../../public/images/image1.jpg";
-import Image from "next/image";
-import { gradiantText } from "../About/About";
 import ScrollDivAnime from "../animation/ScrollDivAnime";
 
 function Contact() {
@@ -21,7 +18,7 @@ function Contact() {
           className="about h-svh flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
         >
           <ScrollDivAnime text="تماس با ما" />
-          <div className="flex items-center gap-8 w-full mx-5 lg:w-10/12">
+          <div className="flex items-center flex-col lg:flex-row gap-8 w-full mx-5 lg:w-10/12">
             <div className="flex flex-col items-center gap-10 w-full">
               <h2 className="lg:text-3xl text-2xl font-semibold ">تاریخچه شرکت</h2>
               <p className="w-full text-[19px]">

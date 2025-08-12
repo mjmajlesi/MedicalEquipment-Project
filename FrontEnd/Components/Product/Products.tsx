@@ -14,7 +14,7 @@ function Products() {
           duration={1}
           delay={0}
           y={20}
-          className="min-h-screen flex flex-col items-center md:justify-center gap-12"
+          className="min-h-screen flex flex-col items-center md:justify-center gap-6 lg:gap-12"
         >
           <ScrollDivAnime text="محصولات" />
           <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 xl:gap-12">
