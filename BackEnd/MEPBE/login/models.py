@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from django.utils.text import slugify
+from slugify import slugify
 
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):  

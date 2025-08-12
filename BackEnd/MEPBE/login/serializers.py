@@ -1,6 +1,6 @@
 from .models import User
 from rest_framework import serializers
-from django.utils.text import slugify
+from slugify import slugify
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
