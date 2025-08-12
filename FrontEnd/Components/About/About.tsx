@@ -10,16 +10,16 @@ export const gradiantText =
 
 function About() {
   return (
-    <div id="Aboutme" className="my-8 lg:my-2">
+    <div id="Aboutme">
       <Container>
         <AnimateDivs
           duration={1}
           delay={0.1}
           y={20}
-          className="about lg:h-svh flex flex-col items-center justify-center gap-10 xl:gap-[100px]"
+          className="about min-h-screen flex flex-col items-center justify-center gap-10 xl:gap-[100px]"
         >
           <ScrollDivAnime text="درباره ما" />
-          <div className="flex items-center flex-col lg:flex-row gap-16 w-11/12 sm:w-10/12">
+          <div className="flex items-center flex-col lg:flex-row gap-8 lg:gap-16 w-11/12 sm:w-10/12">
             <div className="flex flex-col items-start p-2 gap-8 leading-[30px] ">
               <AnimateDivs
                 duration={1.5}

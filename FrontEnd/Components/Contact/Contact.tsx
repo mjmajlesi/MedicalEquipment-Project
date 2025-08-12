@@ -15,7 +15,7 @@ function Contact() {
           duration={1}
           delay={0.1}
           y={10}
-          className="about flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
+          className="contect min-h-screen flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
         >
           <ScrollDivAnime text="تماس با ما" />
           <div className="flex items-center flex-col lg:flex-row gap-8 w-full mx-5 lg:w-10/12">
