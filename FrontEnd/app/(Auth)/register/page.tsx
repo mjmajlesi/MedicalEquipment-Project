@@ -71,7 +71,7 @@ if (result.token && result.refresh) {
   return (
     <Container>
       <div className="flex items-center justify-around h-screen">
-        <AnimateDivs className="" y={20} duration={1.5}>
+        <AnimateDivs className="not-lg:hidden" y={20} duration={1.5}>
           <Image src={Pattern} alt="Pattren" height={500} width={500} />
         </AnimateDivs>
         <AnimateDivs
