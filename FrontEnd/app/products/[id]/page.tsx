@@ -4,7 +4,7 @@ import React from "react";
 
 interface Iparams {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{}>;
+  searchParams: Promise<Record<string, string | string[]>>;
 }
 
 async function ProductPage(props: Iparams) {
