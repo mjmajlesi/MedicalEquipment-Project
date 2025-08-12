@@ -3,16 +3,22 @@ import Button from "@/Components/buttuns";
 import Container from "@/Components/Container";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Pattern from "../../../public/Pattern.png";
 import AnimateDivs from "@/Components/animation/animateDivs";
+import { useRouter } from "next/navigation";
+import { IApi } from "../login/page";
+import { AppContext } from "@/Context/AppContext";
 
 function Register() {
+  const {SetLogin , SetIsLogin} = useContext(AppContext);
+
   const [Username, SetUsername] = useState<string>();
   const [Email, SetEmail] = useState<string>();
   const [Password, SetPassword] = useState<string>();
   const [Confirm, SetConfirm] = useState<string>();
   const [Error, SetError] = useState<string | null>(null);
+  const router = useRouter();
 
   const LoginUser = async () => {
     /* Controls errors */
@@ -33,24 +39,34 @@ function Register() {
       return;
     }
     /* Fetch Users */
-    const data = await fetch("https://httpbin.org/post", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: Username,
-        email: Email,
-        password: Password,
-      }),
-    });
-    const result = await data.json();
-    console.log(result);
+    const data = await fetch(
+      "https://medicalequipment-project.onrender.com/api/v1/sign_up/",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: Username,
+          email: Email,
+          password: Password,
+        }),
+      }
+    );
+    const result : IApi = await data.json();
 
-    result.token
-      ? localStorage.setItem("token", result.token)
-      : SetError(result.message || "مشکلی پیش آمده");
+if (result.token && result.refresh) {
+      console.log(result); // for test
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("refresh", result.refresh);
+      localStorage.setItem("username", result.username);
+      SetLogin(result.username);
+      SetIsLogin(true);
+      router.push("/");
+    } else {
+      SetError(result.error);
+    }
   };
   return (
     <Container>
@@ -58,9 +74,13 @@ function Register() {
         <AnimateDivs className="" y={20} duration={1.5}>
           <Image src={Pattern} alt="Pattren" height={500} />
         </AnimateDivs>
-        <AnimateDivs y={20} duration={1.5} className="flex flex-col w-full md:w-2/3 xl:w-1/3 xl:mx-1 p-2 ">
+        <AnimateDivs
+          y={20}
+          duration={1.5}
+          className="flex flex-col w-full md:w-2/3 xl:w-1/3 xl:mx-1 p-2 "
+        >
           <span className="font-bold text-3xl text-amber-50 text-center ">
-            صفحه ورود
+            صفحه ثبت نام
           </span>
           <div className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
             <input
@@ -101,7 +121,7 @@ function Register() {
               type="submit"
               onClick={LoginUser}
             >
-              ورود
+              ثبت نام
             </Button>
             {Error && (
               <div className="w-full bg-red-700 border border-red-500 text-red-100 px-4 py-2 rounded-2xl mt-2 text-center">

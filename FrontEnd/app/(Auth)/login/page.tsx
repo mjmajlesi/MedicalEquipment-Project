@@ -4,16 +4,25 @@ import Container from "@/Components/Container";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Pattern from "../../../public/Pattern.png";
 import AnimateDivs from "@/Components/animation/animateDivs";
+import { AppContext } from "@/Context/AppContext";
+
+export interface IApi {
+  message : string
+  token : string
+  refresh : string
+  username : string
+  error : string
+}
 
 function Login() {
+  const {SetLogin , SetIsLogin} = useContext(AppContext);
+
   const [Email, SetEmail] = useState<string>();
   const [Password, SetPassword] = useState<string>();
   const [Error, SetError] = useState<string | null>(null);
-  console.log(Email);
-  console.log(Password);
   const router = useRouter();
 
   const LoginUser = async () => {
@@ -31,7 +40,7 @@ function Login() {
       return;
     }
     /* Fetch Users */
-    const data = await fetch("https://httpbin.org/post", {
+    const data = await fetch("https://medicalequipment-project.onrender.com/api/v1/login/", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,12 +48,18 @@ function Login() {
       },
       body: JSON.stringify({ email: Email, password: Password }),
     });
-    const result = await data.json();
-    console.log(result);
-    router.replace("/");
+    const result : IApi = await data.json();
 
-    if (result.token) {
+    if (result.token && result.refresh) {
+      console.log(result); // for test
       localStorage.setItem("token", result.token);
+      localStorage.setItem("refresh", result.refresh);
+      localStorage.setItem("username", result.username);
+      SetLogin(result.username);
+      SetIsLogin(true);
+      router.push("/");
+    } else {
+      SetError(result.error);
     }
   };
 
@@ -57,12 +72,12 @@ function Login() {
         <AnimateDivs
           y={20}
           duration={1.5}
-          className="flex flex-col w-full md:w-2/3 xl:w-1/3 xl:mx-1 p-2 "
+          className="flex flex-col w-full md:w-5/12 xl:mx-1 p-2 "
         >
           <span className="font-bold text-3xl text-amber-50 text-center ">
             صفحه ورود
           </span>
-          <div className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
+          <div className=" flex items-center md:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
             <input
               type="email"
               placeholder="ایمیل"

@@ -1,14 +1,18 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../buttuns";
 import Container from "../Container";
 import Image from "next/image";
 import logo from "../../public/Logo.png";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { AppContext } from "@/Context/AppContext";
 
 function Navbar() {
   const path = usePathname();
+  const router = useRouter();
+  const { SetLogin, SetIsLogin, Login, isLogin } = useContext(AppContext);
+  const [Menu, SetMenu] = useState<boolean>(false);
 
   const navstyle =
     "hover:text-[#7FB2F3] text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
@@ -22,6 +26,16 @@ function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const LoginOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("username");
+
+    SetLogin("");
+    SetIsLogin(false);
+    router.push("/login");
   };
 
   return (
@@ -56,36 +70,67 @@ function Navbar() {
         md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-8 items-center bg-gray-900
         md:bg-transparent`}
         >
-        {path == "/" ? <>
-          <Link className={navstyle} href={"/"}>
-            خانه
-          </Link>
-          <span className={navstyle} onClick={() => scrollSmooth("Products")}>
-            محصولات
-          </span>
-          <span className={navstyle} onClick={() => scrollSmooth("Aboutme")}>
-            درباره ما
-          </span>
-          <span className={navstyle} onClick={() => scrollSmooth("Contact")}>
-            تماس با ما
-          </span> </> : <>
-          <Link className={navstyle} href={"/"}>
-            خانه
-          </Link>
-          <Link className={navstyle} href={"/products"}>
-            محصولات
-          </Link>
-          </>
-}
+          {path == "/" ? (
+            <>
+              <Link className={navstyle} href={"/"}>
+                خانه
+              </Link>
+              <span
+                className={navstyle}
+                onClick={() => scrollSmooth("Products")}
+              >
+                محصولات
+              </span>
+              <span
+                className={navstyle}
+                onClick={() => scrollSmooth("Aboutme")}
+              >
+                درباره ما
+              </span>
+              <span
+                className={navstyle}
+                onClick={() => scrollSmooth("Contact")}
+              >
+                تماس با ما
+              </span>{" "}
+            </>
+          ) : (
+            <>
+              <Link className={navstyle} href={"/"}>
+                خانه
+              </Link>
+              <Link className={navstyle} href={"/products"}>
+                محصولات
+              </Link>
+            </>
+          )}
         </div>
 
         <div className="Login max-md:hidden">
-          <Button
-            className="rounded-xl py-3 px-6"
-            variant="dark"
-          >
-            <Link href={"/login"}>ورود</Link>
-          </Button>
+          {isLogin ? (
+            <div onClick={() => SetMenu(!Menu)}>
+              {Menu ? (
+                <div className=" cursor-pointer rounded-md p-2 bg-white text-black flex items-center gap-4 justify-center">
+                  <span>{Login}</span>
+                  <Button
+                    variant="white"
+                    onClick={LoginOut}
+                    className="rounded-xl py-2 px-3"
+                  >
+                    خروج
+                  </Button>
+                </div>
+              ) : (
+                <Button variant="dark" className="rounded-md px-4 py-3">
+                  <span className="font-semibold">{Login[0]}</span>
+                </Button>
+              )}
+            </div>
+          ) : (
+            <Button className="rounded-xl py-3 px-6" variant="dark">
+              <Link href={"/login"}>ورود</Link>
+            </Button>
+          )}
         </div>
       </div>
     </Container>
