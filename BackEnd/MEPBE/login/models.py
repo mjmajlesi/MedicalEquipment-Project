@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_join = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
-        if not self.slug:
+        if not self.slug:   
             self.slug = slugify(self.username)
         super().save(*args, **kwargs)
 
