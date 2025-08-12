@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../Container";
 import Button from "../buttuns";
 import { FaInstagram } from "react-icons/fa";
-import Map from "./Map";
+import { Map } from "../DynamicImport";
 
 function Footer() {
   return (

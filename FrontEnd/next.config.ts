@@ -2,13 +2,9 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
-    unoptimized: true, // چون GH Pages image optimizer نداره
+    domains: ['medicalequipment-project.onrender.com'],
   },
-  basePath: '/MedicalEquipment-Project', // اسم ریپوی گیت‌هاب
-  assetPrefix: '/MedicalEquipment-Project/',
-};
+}
 
 module.exports = nextConfig;
-
