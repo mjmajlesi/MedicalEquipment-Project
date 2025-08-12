@@ -85,11 +85,15 @@ WSGI_APPLICATION = "MEPBE.wsgi.application"
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASURL'),
-        conn_max_age=600, 
-        ssl_require=True   
+        default=os.getenv(
+            'DATABASE_URL',
+            f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+        ),
+        conn_max_age=600,
+        ssl_require=False  # برای لوکال
     )
 }
+
 
 
 # Password validation
