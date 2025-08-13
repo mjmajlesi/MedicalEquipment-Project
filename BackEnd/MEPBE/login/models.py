@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from django.utils.text import slugify
+from slugify import slugify
 
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):  
@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_join = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
-        if not self.slug:
+        if not self.slug:   
             self.slug = slugify(self.username)
         super().save(*args, **kwargs)
 
