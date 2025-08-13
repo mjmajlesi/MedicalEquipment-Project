@@ -43,7 +43,7 @@ function Navbar() {
       <div
         className={`${
           isNav
-            ? "text-[#ededed] px-2 py-4 flex items-center justify-around w-full h-[80px] "
+            ? "text-[#ededed] p-2 flex items-center justify-around w-full h-[80px] "
             : "h-[250px] p-2"
         }`}
       >
@@ -58,11 +58,11 @@ function Navbar() {
           />
           <div
             onClick={toggleNav}
-            className="md:hidden flex flex-col justify-between w-[36px] h-[32px] m-2"
+            className="md:hidden flex flex-col justify-between w-[35px] h-[30px] m-2"
           >
-            <span className="h-[6px] w-full bg-white rounded-md"></span>
-            <span className="h-[6px] w-full bg-white rounded-md"></span>
-            <span className="h-[6px] w-full bg-white rounded-md"></span>
+            <span className="h-[5px] w-full bg-white rounded-md"></span>
+            <span className="h-[5px] w-full bg-white rounded-md"></span>
+            <span className="h-[5px] w-full bg-white rounded-md"></span>
           </div>
         </div>
         <div
@@ -92,7 +92,27 @@ function Navbar() {
                 onClick={() => scrollSmooth("Contact")}
               >
                 تماس با ما
-              </span>{" "}
+              </span>
+              {typeof window !== "undefined" &&
+                window.innerWidth <= 768 &&
+                (isLogin ? (
+                  <div className="flex items-center gap-2">
+                    <Link className={navstyle} href={"/login"}>
+                      {Login}
+                    </Link>
+                    <Button
+                      variant="white"
+                      onClick={LoginOut}
+                      className="rounded-xl py-2 px-3"
+                    >
+                      خروج
+                    </Button>
+                  </div>
+                ) : (
+                  <Link className={navstyle} href={"/login"}>
+                    ورود
+                  </Link>
+                ))}
             </>
           ) : (
             <>
