@@ -1,43 +1,69 @@
 import os
-import django
 import sys
+import django
 
 sys.path.append('/mnt/tempdisk/MedicalEquipment-Project/MedicalEquipment-Project/BackEnd/MEPBE')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MEPBE.settings")
 django.setup()
 
 import csv
-from Products.models import Product
+from django.db import transaction
 from django.utils.text import slugify
+from Products.models import Product
 
-existing_slugs = set(Product.objects.values_list("slug", flat=True))
 
-def generate_unique_slug(base_slug, existing_slugs):
+def make_base_slug(title: str) -> str:
+    base = slugify(title or "", allow_unicode=True).strip("-")
+    return base or "product"
+
+
+def generate_unique_slug(base_slug: str, existing_slugs: set) -> str:
+    slug = base_slug
     counter = 1
-    slug = f"{base_slug}-{counter}"
     while slug in existing_slugs:
-        counter += 1
         slug = f"{base_slug}-{counter}"
+        counter += 1
     existing_slugs.add(slug)
     return slug
 
-with open('/mnt/tempdisk/MedicalEquipment-Project/MedicalEquipment-Project/BackEnd/MEPBE/Products/media/details.csv', newline="", encoding="utf-8") as csvfile:
-    reader = csv.DictReader(csvfile)
-    products = []
 
-    for row in reader:
-        title = row["title"].strip()
-        base_slug = slugify(title)
-        unique_slug = generate_unique_slug(base_slug, existing_slugs)
+CSV_PATH = "/mnt/tempdisk/MedicalEquipment-Project/MedicalEquipment-Project/BackEnd/MEPBE/Products/media/details.csv"
 
-        image_filename = row["image"].strip()  
-        image_path = f"images/{image_filename}"  
+def main():
+    existing_slugs = set(
+        s for s in Product.objects.values_list("slug", flat=True)
+        if s  
+    )
 
-        products.append(Product(
-            title=title,
-            description=row["description"],
-            image=image_path,
-            slug=unique_slug
-        ))
+    products_to_create = []
 
-    Product.objects.bulk_create(products)
+    with open(CSV_PATH, newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+            title = (row.get("title") or "").strip()
+            description = row.get("description") or ""
+            image_filename = (row.get("image") or "").strip()
+
+            base_slug = make_base_slug(title)
+
+            unique_slug = generate_unique_slug(base_slug, existing_slugs)
+
+            image_filename = os.path.basename(image_filename)
+            image_path = f"images/{image_filename}" if image_filename else ""
+
+            products_to_create.append(Product(
+                title=title,
+                description=description,
+                image=image_path,
+                slug=unique_slug
+            ))
+
+    with transaction.atomic():
+        Product.objects.bulk_create(products_to_create)
+
+    print(f"Done. Created {len(products_to_create)} products.")
+
+
+if __name__ == "__main__":
+    main()
