@@ -90,7 +90,7 @@ DATABASES = {
             f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
         ),
         conn_max_age=600,
-        ssl_require=False  # برای لوکال
+        ssl_require=False 
     )
 }
 

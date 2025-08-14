@@ -2,7 +2,7 @@ import os
 import sys
 import django
 
-sys.path.append('/mnt/tempdisk/MedicalEquipment-Project/MedicalEquipment-Project/BackEnd/MEPBE')
+sys.path.append('/mnt/tempdisk/MedicalEquipment-Project/BackEnd/MEPBE')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MEPBE.settings")
 django.setup()
 
@@ -27,7 +27,7 @@ def generate_unique_slug(base_slug: str, existing_slugs: set) -> str:
     return slug
 
 
-CSV_PATH = "/mnt/tempdisk/MedicalEquipment-Project/MedicalEquipment-Project/BackEnd/MEPBE/Products/media/details.csv"
+CSV_PATH = "/mnt/tempdisk/MedicalEquipment-Project/BackEnd/MEPBE/Products/media/details.csv"
 
 def main():
     existing_slugs = set(
