@@ -7,8 +7,8 @@ import { Map } from "../DynamicImport";
 function Footer() {
   return (
     <Container>
-        <div className="footerTop flex items-end justify-between mt-24">
-          <div className="Search w-full not-md:px-4 lg:w-[450px] flex items-center gap-4 my-8">
+        <div className="footerTop flex items-center justify-center md:items-end md:justify-between mt-20">
+          <div className="Search w-full not-md:hidden not-md:px-4 lg:w-[450px] flex items-center gap-4 my-8">
             <input
               type="text"
               placeholder="جستجو"
@@ -18,7 +18,7 @@ function Footer() {
             />
             <Button variant="login" className="px-3 rounded-xl bg-gradient-to-r from-[#1d1d9a] to-[#1e98d5] text-amber-50">جستجو</Button>
           </div>
-          <div className="footerMapContainer h-[200px] md:w-[200px] xl:w-[500px] not-md:hidden border-2 my-8 ">
+          <div className="footerMapContainer h-[150px] sm:h-[180px] md:h-[200px] w-full md:w-[250px] xl:w-[500px] border-2 my-8 ">
             <Map />
           </div>
         </div>
