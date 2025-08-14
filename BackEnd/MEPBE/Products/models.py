@@ -1,4 +1,3 @@
-from django.utils.text import slugify
 from django.db import models
 
 class Product(models.Model):
@@ -9,19 +8,8 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.title
-    
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            base_slug = slugify(self.title)
-            counter = 1
-            slug = f"{base_slug}-{counter}"
+def save(self, *args, **kwargs):
+    if not self.slug:
+        self.slug = self.title.replace(" ", "-")
 
-            while Product.objects.filter(slug=slug).exists():
-                counter += 1
-                slug = f"{base_slug}-{counter}"
-
-            self.slug = slug
-
-        super().save(*args, **kwargs)
+    super().save(*args, **kwargs)
