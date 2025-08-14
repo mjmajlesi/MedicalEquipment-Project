@@ -15,7 +15,7 @@ function Navbar() {
   const [Menu, SetMenu] = useState<boolean>(false);
 
   const navstyle =
-    "hover:text-[#7FB2F3] text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
+    "hover:text-[#7FB2F3] active:bg-gray-700 py-1 px-2 active:rounded-md text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
 
   const [isNav, SetIsNav] = useState(true);
   const toggleNav = () => {
@@ -67,7 +67,7 @@ function Navbar() {
         </div>
         <div
           className={` ${isNav ? "hidden" : "flex"}
-        md:flex flex-col rounded-lg md:flex-row gap-4 p-3 md:gap-8 items-center bg-gray-900
+        md:flex flex-col rounded-lg md:flex-row gap-2 p-3 md:gap-8 items-center bg-gray-900
         md:bg-transparent`}
         >
           {path == "/" ? (
@@ -147,7 +147,7 @@ function Navbar() {
               )}
             </div>
           ) : (
-            <Button className="rounded-xl py-3 px-6" variant="dark">
+            <Button className="rounded-xl py-3 px-6 active:bg-gray-300" variant="dark">
               <Link href={"/login"}>ورود</Link>
             </Button>
           )}

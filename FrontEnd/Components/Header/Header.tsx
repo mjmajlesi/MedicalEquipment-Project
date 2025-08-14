@@ -45,7 +45,7 @@ function Header() {
             >
               <Button
                 variant="dark"
-                className=" active:bg-[#7FB2F3] px-5 py-4 rounded-xl xl:text-[18px]"
+                className=" active:bg-gray-300 px-5 py-4 rounded-xl xl:text-[18px]"
               >
                 <Link href={"/products"}>
                   <div className="flex items-center gap-[2px] sm:gap-2">

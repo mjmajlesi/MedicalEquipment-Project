@@ -17,8 +17,11 @@ function Products() {
           className="flex min-h-screen flex-col items-center md:justify-center gap-6 lg:gap-16"
         >
           <ScrollDivAnime text="محصولات" />
-          <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 xl:gap-12">
+          <div className="hidden md:gap-6 md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 xl:gap-12">
             <Product id={6} />
+          </div>
+          <div className="flex flex-col items-center gap-6 md:hidden">
+            <Product id={4} />
           </div>
           <div>
             <Button

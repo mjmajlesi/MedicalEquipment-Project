@@ -19,9 +19,9 @@ function Contact() {
         >
           <ScrollDivAnime text="تماس با ما" />
           <div className="flex items-center flex-col lg:flex-row gap-8 w-full mx-5 lg:w-10/12">
-            <div className="flex flex-col items-center gap-10 w-full">
-              <h2 className="lg:text-3xl text-2xl font-semibold ">تاریخچه شرکت</h2>
-              <p className="w-full text-[19px]">
+            <div className="flex flex-col items-center gap-6 lg:gap-10 w-full">
+              <h2 className="text-3xl font-semibold lg:text-[4xl] ">تاریخچه شرکت</h2>
+              <p className="w-full not-md:px-4 text-[18px] lg:text-[20px]">
                 بنیانگذاران شرکت فروغ طب با تجربه چند دهه فعالیت در حوزه خدمات
                 پزشکی و بیمارستانی برآن شدند تا با تاسیس شرکت فروغ طب روناک سینا
                 در سال 1398، فعالیت های خود را در مجموعه های بیمارستانی متمرکز
@@ -32,15 +32,15 @@ function Contact() {
               </p>
             </div>
             <div className="GroupCards flex flex-col items-center gap-8 lg:gap-10 w-full">
-              <div className="flex flex-col lg:flex-row justify-between w-full gap-6">
-                <div className="flex justify-center gap-2 items-center bg-gray-600 px-8 py-4 rounded-2xl">
+              <div className="flex flex-col lg:flex-row justify-between lg:w-full gap-6">
+                <div className="flex justify-center gap-2 items-center bg-gray-600 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                   <CopiedButtun
                     text="081-32515434"
-                    className="rounded-xl px-4 py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
+                    className="rounded-xl px-3 py-2 lg:px-4 lg:py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
                   />
                   <PiPhoneFill size={60} color="#88888b" />
                 </div>
-                <div className="flex justify-center gap-2 items-center  bg-gray-600 px-8 py-4 rounded-2xl">
+                <div className="flex justify-center gap-2 items-center bg-gray-600 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                   <CopiedButtun
                     text="081-32515434"
                     className="rounded-xl px-4 py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
@@ -48,12 +48,12 @@ function Contact() {
                   <MdPhoneIphone size={50} color="#88888b" />
                 </div>
               </div>
-              <div className="flex justify-center gap-4 items-center w-full bg-gray-600 px-6 py-4 rounded-2xl">
+              <div className="flex justify-center gap-4 items-center bg-gray-600 px-4 py-2 md:px-5 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                 <CopiedButtun
                   text="همدان، میدان آرامگاه بوعلی سینا، مرکز اداری الماس (ساختمان شماره 1)، طبقه چهارم، واحد 37"
-                  className="rounded-xl lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
+                  className="rounded-xl w-10/12 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
                 />
-                <PiMapPinAreaBold size={80} color="#88888b" />
+                <PiMapPinAreaBold size={50} color="#88888b" />
               </div>
             </div>
           </div>
