@@ -6,6 +6,7 @@ import CopiedButtun from "../Contact/CopiedButtun";
 import { MdPhoneIphone } from "react-icons/md";
 import { PiMapPinAreaBold } from "react-icons/pi";
 import ScrollDivAnime from "../animation/ScrollDivAnime";
+import { Map } from "../DynamicImport";
 
 function Contact() {
   return (
@@ -15,24 +16,20 @@ function Contact() {
           duration={1}
           delay={0.1}
           y={10}
-          className="contect min-h-screen flex flex-col items-center justify-center gap-8 xl:gap-[100px]"
+          className="contect min-h-screen lg:w-10/12 mx-auto flex flex-col items-center justify-center gap-6 xl:gap-[80px]"
         >
-          <ScrollDivAnime text="تماس با ما" />
-          <div className="flex items-center flex-col lg:flex-row gap-8 w-full mx-5 lg:w-10/12">
-            <div className="flex flex-col items-center gap-6 lg:gap-10 w-full">
-              <h2 className="text-3xl font-semibold lg:text-[4xl] ">تاریخچه شرکت</h2>
-              <p className="w-full not-md:px-4 text-[18px] lg:text-[20px]">
-                بنیانگذاران شرکت فروغ طب با تجربه چند دهه فعالیت در حوزه خدمات
-                پزشکی و بیمارستانی برآن شدند تا با تاسیس شرکت فروغ طب روناک سینا
-                در سال 1398، فعالیت های خود را در مجموعه های بیمارستانی متمرکز
-                کرده و طی این مدت به موفقیت های خوبی در این حوزه دست یافته اند.
-                اینک با هدف گسترش خدمات بیمارستانی در زمینه گاز های طبی و
-                نگهداشت دستگاه های اکسیژن ساز و نیز خدمات ایزولاسیون مراکز
-                تصویربرداری افق های روشنی را برای آینده ترسیم کرده ایم.
-              </p>
+          <ScrollDivAnime
+            text="تماس با ما"
+            widthLeft={1}
+            widthRight={1}
+            className="font-bold text-[30px] md:text-[36px] lg:text-[48px] "
+          />
+          <div className="flex items-center flex-col xl:flex-row gap-10 w-full">
+            <div className="footerMapContainer rounded-[10px] h-[200px] w-[300px] md:h-[250px] md:w-full border-2 my-8 ">
+              <Map />
             </div>
-            <div className="GroupCards flex flex-col items-center gap-8 lg:gap-10 w-full">
-              <div className="flex flex-col lg:flex-row justify-between lg:w-full gap-6">
+            <div className="GroupCards flex flex-col items-center justify-center gap-8 lg:gap-10 w-full">
+              <div className="flex flex-col lg:flex-row justify-center gap-8 lg:w-full">
                 <div className="flex justify-center gap-2 items-center bg-gray-600 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                   <CopiedButtun
                     text="081-32515434"
@@ -42,8 +39,8 @@ function Contact() {
                 </div>
                 <div className="flex justify-center gap-2 items-center bg-gray-600 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                   <CopiedButtun
-                    text="081-32515434"
-                    className="rounded-xl px-4 py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
+                    text="09188110276"
+                    className="rounded-xl px-4 py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea] "
                   />
                   <MdPhoneIphone size={50} color="#88888b" />
                 </div>
