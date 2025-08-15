@@ -29,22 +29,22 @@ async function ProductPage(props: Iparams) {
     <>
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-around h-screen">
-          <div>
+          <div className="flex items-center justify-center w-full lg:w-1/2">
             <Image
               src={data.image}
               alt={data.title}
-              width={330}
+              width={350}
               height={350}
-              className="w-[330px] h-[350px] object-cover rounded-[32px]"
+              className="w-[350px] h-[350px] object-cover rounded-[32px]"
             />
           </div>
-          <div className="flex flex-col items-start gap-6 ">
+          <div className="flex flex-col items-start gap-6 w-full ">
             <h3 className="font-bold text-[32px] mt-5 line-clamp-1">
               {data.title}
             </h3>
             <span className="bg-[#3A3A41] h-[2px] w-full"></span>
 
-            <p className="line-clamp-2 text-[16px]">{data.description}</p>
+            <p className="text-[16px]">{data.description}</p>
           </div>
         </div>
       </Container>
