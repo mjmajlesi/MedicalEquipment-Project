@@ -3,8 +3,8 @@ The Medical Equipment Web App for FroghTeb Ronak Sina in Hamadan
 
 ## images
 <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-  <img src="./Frontend/public/Home.png" width="100%" height="100%"/>
-  <img src="./Frontend/public/phone.png" width="200" height="400"/>
+  <img src="./FrontEnd/public/Home.png" width="100%" height="100%"/>
+  <img src="./FrontEnd/public/phone.png" width="200" height="400"/>
 </div>
 
 ## Description
