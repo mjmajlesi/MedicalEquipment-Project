@@ -50,8 +50,8 @@ function Navbar() {
         <div className=" py-4 not-md:w-full not-md:flex not-md:justify-between not-md:items-center">
           <Image
             className="rounded-2xl"
-            width={65}
-            height={65}
+            width={60}
+            height={60}
             src={logo}
             alt="Logo"
             priority
