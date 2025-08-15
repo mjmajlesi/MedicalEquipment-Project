@@ -4,32 +4,41 @@ import { useInView } from "react-intersection-observer";
 import React from "react";
 import { gradiantText } from "../About/About";
 
-function ScrollDivAnime({text} : {text : string}) {
+interface IscrolldivAnime {
+  text : string
+  widthRight : number
+  widthLeft : number
+  className? : string
+}
+
+function ScrollDivAnime({text , widthLeft , widthRight , className} : IscrolldivAnime) {
   const { ref, inView } = useInView({ threshold: 0.5 });
 
   return (
     <div
       ref={ref}
-      className="flex items-center justify-center w-full lg:w-10/12 mx-auto gap-4 lg:gap-8"
+      className="flex items-center justify-start w-full gap-3"
     >
       <motion.span
-        className="bg-[#3A3A41] h-[2px] origin-right"
-        initial={{ width: 0 }}
-        animate={{ width: inView ? "500px" : 0 }}
+        className={`bg-[#3A3A41] h-[2px] flex-grow ${widthRight == 0 && "hidden"}`}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: inView ? widthRight : 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
+        style={{ transformOrigin: "right" }}
       />
 
       <h1
-        className={`${gradiantText} font-bold text-[30px] md:text-[36px] lg:text-[48px] whitespace-nowrap`}
+        className={`${gradiantText} ${className} whitespace-nowrap`}
       >
         {text}
       </h1>
 
       <motion.span
-        className="bg-[#3A3A41] h-[2px] origin-left"
-        initial={{ width: 0 }}
-        animate={{ width: inView ? "500px" : 0 }}
+        className="bg-[#3A3A41] h-[2px] flex-grow"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: inView ? widthLeft : 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
+        style={{ transformOrigin: "left" }}
       />
     </div>
   );
