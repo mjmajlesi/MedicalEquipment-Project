@@ -16,7 +16,12 @@ function Products() {
           y={5}
           className="flex min-h-screen flex-col items-center md:justify-center gap-6 lg:gap-16"
         >
-          <ScrollDivAnime text="محصولات" />
+          <ScrollDivAnime
+            text="محصولات"
+            widthLeft={1}
+            widthRight={1}
+            className="font-bold text-[30px] md:text-[36px] lg:text-[48px]"
+          />
           <div className="hidden md:gap-6 md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-cols-3 xl:grid-rows-2 xl:gap-12">
             <Product id={6} />
           </div>

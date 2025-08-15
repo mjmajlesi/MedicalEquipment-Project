@@ -13,10 +13,16 @@ async function ProductPage(props: Iparams) {
   const res = await fetch(
     `https://medicalequipment-project.onrender.com/api/v1/products_detail/product-${id}`
   );
-  if (!res.ok)
+  if (!res.ok) {
+    console.log(res);
     return (
-      <h1>اوه انگار مشکلی پیش امده و محصول انتخابی شما در سایت وجود نداره!</h1>
+      <div className="h-screen flex items-center justify-center w-full">
+        <h1 className="text-2xl font-semibold">
+          اوه انگار مشکلی پیش امده و محصول انتخابی شما در سایت وجود نداره!
+        </h1>
+      </div>
     );
+  }
   const data: IProducts = await res.json();
 
   return (

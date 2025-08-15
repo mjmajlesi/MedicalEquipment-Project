@@ -36,7 +36,7 @@ async function Product({id} : {id : number}) {
                 <span className="lg:line-clamp-2 text-[14px] text-black opacity-60 line-clamp-1 ">
                   {product.description}
                 </span>
-                <button className="absolute bottom-4 right-2 left-2 bg-[#000000] px-5 py-2.5 rounded-[80px] text-white font-semibold cursor-pointer hover:scale-105 transition-all duration-300 ">
+                <button className="absolute bottom-4 right-2 left-2 bg-[#000000] px-5 py-2.5 rounded-[80px] text-white font-semibold cursor-pointer hover:scale-102 transition-all duration-300 ">
                   <Link href={`/products/${product.id}`}>
                     برای اطلاعات بیشتر
                   </Link>

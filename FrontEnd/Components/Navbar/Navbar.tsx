@@ -15,7 +15,7 @@ function Navbar() {
   const [Menu, SetMenu] = useState<boolean>(false);
 
   const navstyle =
-    "hover:text-[#7FB2F3] active:bg-gray-700 py-1 px-2 active:rounded-md text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
+    "active:bg-gray-700 py-1 px-2 active:rounded-md text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
 
   const [isNav, SetIsNav] = useState(true);
   const toggleNav = () => {
@@ -47,11 +47,11 @@ function Navbar() {
             : "h-[250px] p-2"
         }`}
       >
-        <div className="p-2 not-md:w-full not-md:flex not-md:justify-between not-md:items-center">
+        <div className=" py-4 not-md:w-full not-md:flex not-md:justify-between not-md:items-center">
           <Image
             className="rounded-2xl"
-            width={50}
-            height={50}
+            width={65}
+            height={65}
             src={logo}
             alt="Logo"
             priority
