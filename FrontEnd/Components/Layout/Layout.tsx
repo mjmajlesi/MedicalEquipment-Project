@@ -6,20 +6,24 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   const [Login , SetLogin] = useState<string>("")
   const [isLogin , SetIsLogin] = useState<boolean>(false)
+  const [Emails , SetEmails] = useState<string>("")
 
   
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
     const savedUsername = localStorage.getItem("username");
-    if (savedToken && savedUsername) {
+    const savedEmail = localStorage.getItem("Email");
+
+    if (savedToken && savedUsername && savedEmail) {
       SetIsLogin(true);
       SetLogin(savedUsername);
+      SetEmails(savedEmail);
     }
   }, []);
   
 
   return (
-  <AppContext.Provider value={{Login, SetLogin, isLogin, SetIsLogin}}>
+  <AppContext.Provider value={{Login, SetLogin, isLogin, SetIsLogin, Emails, SetEmails}}>
     {children}
   </AppContext.Provider>
   )

@@ -7,15 +7,16 @@ import Image from "next/image";
 import logo from "../../public/Logo.png";
 import { usePathname, useRouter } from "next/navigation";
 import { AppContext } from "@/Context/AppContext";
+import ProfileMenu from "./Avatar";
+import { Phone, Home, Store, Highlighter } from "lucide-react";
 
 function Navbar() {
   const path = usePathname();
   const router = useRouter();
-  const { SetLogin, SetIsLogin, Login, isLogin } = useContext(AppContext);
-  const [Menu, SetMenu] = useState<boolean>(false);
+  const { SetLogin, SetIsLogin, isLogin } = useContext(AppContext);
 
   const navstyle =
-    "active:bg-gray-700 py-1 px-2 active:rounded-md text-[#ededed] relative transition-all duration-300 ease-in-out text-[18px] hover:text-[20px] font-semibold cursor-pointer";
+    "hover:bg-gray-700 py-2 px-3 hover:rounded-md text-[#ededed] flex items-center gap-2  text-[18px] font-semibold cursor-pointer";
 
   const [isNav, SetIsNav] = useState(true);
   const toggleNav = () => {
@@ -32,6 +33,7 @@ function Navbar() {
     localStorage.removeItem("token");
     localStorage.removeItem("refresh");
     localStorage.removeItem("username");
+    localStorage.removeItem("Email");
 
     SetLogin("");
     SetIsLogin(false);
@@ -49,13 +51,25 @@ function Navbar() {
       >
         <div className=" py-4 not-md:w-full not-md:flex not-md:justify-between not-md:items-center">
           <Image
-            className="rounded-2xl"
-            width={60}
+            className="rounded-2xl not-md:hidden"
+            width={65}
             height={60}
             src={logo}
             alt="Logo"
             priority
           />
+          <div className="Login md:hidden">
+            {isLogin ? (
+              <ProfileMenu />
+            ) : (
+              <Button
+                className="rounded-xl font-semibold py-3 px-6 active:bg-gray-300"
+                variant="dark"
+              >
+                <Link href={"/login"}>ورود</Link>
+              </Button>
+            )}
+          </div>
           <div
             onClick={toggleNav}
             className="md:hidden flex flex-col justify-between w-[35px] h-[30px] m-2"
@@ -67,87 +81,58 @@ function Navbar() {
         </div>
         <div
           className={` ${isNav ? "hidden" : "flex"}
-        md:flex flex-col rounded-lg md:flex-row gap-2 p-3 md:gap-8 items-center bg-gray-900
+        md:flex flex-col rounded-lg md:flex-row gap-1 p-3 md:gap-4 items-center bg-gray-900
         md:bg-transparent`}
         >
           {path == "/" ? (
             <>
               <Link className={navstyle} href={"/"}>
+                <Home size={18} />
                 خانه
               </Link>
               <span
                 className={navstyle}
                 onClick={() => scrollSmooth("Products")}
               >
+                <Store size={18} />
                 محصولات
               </span>
               <span
                 className={navstyle}
                 onClick={() => scrollSmooth("Aboutme")}
               >
+                <Highlighter size={18} />
                 درباره ما
               </span>
               <span
                 className={navstyle}
                 onClick={() => scrollSmooth("Contact")}
               >
+                <Phone size={18} />
                 تماس با ما
               </span>
-              {typeof window !== "undefined" &&
-                window.innerWidth <= 768 &&
-                (isLogin ? (
-                  <div className="flex items-center gap-2">
-                    <Link className={navstyle} href={"/login"}>
-                      {Login}
-                    </Link>
-                    <Button
-                      variant="white"
-                      onClick={LoginOut}
-                      className="rounded-xl py-2 px-3"
-                    >
-                      خروج
-                    </Button>
-                  </div>
-                ) : (
-                  <Link className={navstyle} href={"/login"}>
-                    ورود
-                  </Link>
-                ))}
             </>
           ) : (
             <>
               <Link className={navstyle} href={"/"}>
+                <Home size={18} />
                 خانه
               </Link>
               <Link className={navstyle} href={"/products"}>
+                <Store size={18} />
                 محصولات
               </Link>
             </>
           )}
         </div>
-
         <div className="Login max-md:hidden">
           {isLogin ? (
-            <div onClick={() => SetMenu(!Menu)}>
-              {Menu ? (
-                <div className=" cursor-pointer rounded-md p-2 bg-white text-black flex items-center gap-4 justify-center">
-                  <span>{Login}</span>
-                  <Button
-                    variant="white"
-                    onClick={LoginOut}
-                    className="rounded-xl py-2 px-3"
-                  >
-                    خروج
-                  </Button>
-                </div>
-              ) : (
-                <Button variant="dark" className="rounded-md px-4 py-3">
-                  <span className="font-semibold">{Login[0]}</span>
-                </Button>
-              )}
-            </div>
+            <ProfileMenu />
           ) : (
-            <Button className="rounded-xl py-3 px-6 active:bg-gray-300" variant="dark">
+            <Button
+              className="rounded-xl py-3 px-6 active:bg-gray-300"
+              variant="dark"
+            >
               <Link href={"/login"}>ورود</Link>
             </Button>
           )}
