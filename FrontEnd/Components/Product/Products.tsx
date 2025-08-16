@@ -31,7 +31,7 @@ function Products() {
           <div>
             <Button
               variant="normal"
-              className="px-2.5 py-5 bg-gradient-to-br rounded-xl from-[#589AF6] to-[#275ADD]"
+              className="px-2.5 py-5 bg-[#51BCBF] rounded-xl text-black font-semibold"
             >
               <Link href={"/products"}>برای دیدن موارد بیشتر</Link>
             </Button>

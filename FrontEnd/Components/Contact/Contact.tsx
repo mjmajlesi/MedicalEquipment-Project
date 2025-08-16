@@ -30,27 +30,27 @@ function Contact() {
             </div>
             <div className="GroupCards flex flex-col items-center justify-center gap-8 lg:gap-10 w-full">
               <div className="flex flex-col lg:flex-row justify-center gap-8 lg:w-full">
-                <div className="flex justify-center gap-2 items-center bg-gray-600 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
+                <div className="flex justify-center gap-2 items-center bg-gray-900 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                   <CopiedButtun
                     text="081-32515434"
-                    className="rounded-xl px-3 py-2 lg:px-4 lg:py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
+                    className="rounded-xl lg:text-md text-[18px] md:text-[20px] cursor-pointer font-semibold text-[#e5e5ea]"
                   />
-                  <PiPhoneFill size={60} color="#88888b" />
+                  <PiPhoneFill className="w-[60px] h-[60px] bg-[#51BCBF] text-white rounded-full shadow-md p-2" />
                 </div>
-                <div className="flex justify-center gap-2 items-center bg-gray-600 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
+                <div className="flex justify-center gap-2 items-center bg-gray-900 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                   <CopiedButtun
                     text="09188110276"
-                    className="rounded-xl px-4 py-2 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea] "
+                    className="lg:text-md text-[18px] md:text-[20px] cursor-pointer font-semibold text-[#e5e5ea]"
                   />
-                  <MdPhoneIphone size={50} color="#88888b" />
+                  <MdPhoneIphone className="w-[60px] h-[60px] bg-[#51BCBF] text-white rounded-full shadow-md p-2" />
                 </div>
               </div>
-              <div className="flex justify-center gap-4 items-center bg-gray-600 px-4 py-2 md:px-5 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
+              <div className="flex justify-center gap-4 items-center bg-gray-900 px-4 py-2 md:px-5 md:py-3 lg:px-8 lg:py-4 rounded-2xl">
                 <CopiedButtun
                   text="همدان، میدان آرامگاه بوعلی سینا، مرکز اداری الماس (ساختمان شماره 1)، طبقه چهارم، واحد 37"
-                  className="rounded-xl w-10/12 lg:text-md text-[18px] cursor-pointer font-semibold bg-gray-700 text-[#e5e5ea]"
+                  className="w-10/12 lg:text-md text-[18px] cursor-pointer font-semibold text-[#e5e5ea]"
                 />
-                <PiMapPinAreaBold size={50} color="#88888b" />
+                <PiMapPinAreaBold className="w-[60px] h-[60px] bg-[#51BCBF] text-white rounded-full shadow-md p-2"/>
               </div>
             </div>
           </div>
