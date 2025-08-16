@@ -6,7 +6,7 @@ import ScrollDivAnime from "../animation/ScrollDivAnime";
 import SwiperComp from "./Swiper";
 
 export const gradiantText =
-  "bg-gradient-to-r from-[rgba(255,255,255,0.4)] via-white to-[rgba(255,255,255,0.4)] bg-clip-text ";
+  "bg-gradient-to-r from-[#8B8B8B] via-white to-[#A4A4A4] bg-clip-text ";
 
 function About() {
   return (
