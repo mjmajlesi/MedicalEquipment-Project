@@ -11,13 +11,15 @@ import { IApi } from "../login/page";
 import { AppContext } from "@/Context/AppContext";
 
 function Register() {
-  const {SetLogin , SetIsLogin} = useContext(AppContext);
+  const { SetLogin, SetIsLogin, SetEmails } = useContext(AppContext);
 
   const [Username, SetUsername] = useState<string>();
   const [Email, SetEmail] = useState<string>();
   const [Password, SetPassword] = useState<string>();
   const [Confirm, SetConfirm] = useState<string>();
   const [Error, SetError] = useState<string | null>(null);
+  const [Success, SetSuccess] = useState<boolean>(false);
+  const [Wait, SetWait] = useState<boolean>(false);
   const router = useRouter();
 
   const LoginUser = async () => {
@@ -38,6 +40,8 @@ function Register() {
       SetError("اوه! رمز عبور با تایید رمز عبور یکسان نیستند!");
       return;
     }
+
+    SetWait(true);
     /* Fetch Users */
     const data = await fetch(
       "https://medicalequipment-project.onrender.com/api/v1/sign_up/",
@@ -54,20 +58,24 @@ function Register() {
         }),
       }
     );
-    const result : IApi = await data.json();
+    const result: IApi = await data.json();
 
-if (result.token && result.refresh) {
-      console.log(result); // for test
+    if (result.token && result.refresh) {
+      SetWait(false);
+      SetSuccess(true);
       localStorage.setItem("token", result.token);
       localStorage.setItem("refresh", result.refresh);
       localStorage.setItem("username", result.username);
+      localStorage.setItem("Email", Email);
       SetLogin(result.username);
       SetIsLogin(true);
+      SetEmails(Email);
       router.push("/");
     } else {
       SetError(result.error);
     }
   };
+
   return (
     <Container>
       <div className="flex items-center justify-around h-screen">
@@ -89,7 +97,11 @@ if (result.token && result.refresh) {
               name="username"
               onChange={(e) => SetUsername(e.target.value)}
               required
-              className="w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200"
+              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
+                Error
+                  ? "border-2 border-red-500"
+                  : " border-3 border-emerald-900"
+              }`}
             />
             <input
               type="email"
@@ -97,7 +109,11 @@ if (result.token && result.refresh) {
               name="Email"
               onChange={(e) => SetEmail(e.target.value)}
               required
-              className="w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200"
+              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
+                Error
+                  ? "border-2 border-red-500"
+                  : " border-3 border-emerald-900"
+              }`}
             />
             <input
               type="password"
@@ -105,7 +121,11 @@ if (result.token && result.refresh) {
               required
               name="Password"
               onChange={(e) => SetPassword(e.target.value)}
-              className="w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200"
+              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
+                Error
+                  ? "border-2 border-red-500"
+                  : " border-3 border-emerald-900"
+              }`}
             />
             <input
               type="password"
@@ -113,7 +133,11 @@ if (result.token && result.refresh) {
               required
               name="ConfirmPassword"
               onChange={(e) => SetConfirm(e.target.value)}
-              className="w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200"
+              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
+                Error
+                  ? "border-2 border-red-500"
+                  : " border-3 border-emerald-900"
+              }`}
             />
             <Button
               className="p-2 bg-[#2f3538] rounded-[8px] h-[55px] w-full"
@@ -128,11 +152,22 @@ if (result.token && result.refresh) {
                 {Error}
               </div>
             )}
+            {Success && (
+              <div className="w-full bg-emerald-700 border border-emerald-500 text-emerald-100 px-4 py-2 rounded-2xl mt-2 text-center">
+                ورود موفقیت آمیز بود درحال انتقال به صفحه اصلی...
+              </div>
+            )}
+            {Wait && (
+              <div className="w-full bg-blue-700 border border-blue-500 text-blue-100 px-4 py-2 rounded-2xl mt-2 text-center">
+                لطفا کمی صبر کنید...
+              </div>
+            )}
             <p className="p-2">
               قبلا ثبت نام کردی؟
               <Link
                 className="font-semibold  text-white hover:text-[d8d5d5] transition-all duration-200 mx-2"
-                href={"./login"}
+                href={"/login"}
+                prefetch={false}
               >
                 ورود
               </Link>

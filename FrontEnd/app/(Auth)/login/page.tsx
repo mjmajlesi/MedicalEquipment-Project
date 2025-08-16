@@ -10,19 +10,21 @@ import AnimateDivs from "@/Components/animation/animateDivs";
 import { AppContext } from "@/Context/AppContext";
 
 export interface IApi {
-  message : string
-  token : string
-  refresh : string
-  username : string
-  error : string
+  message: string;
+  token: string;
+  refresh: string;
+  username: string;
+  error: string;
 }
 
 function Login() {
-  const {SetLogin , SetIsLogin} = useContext(AppContext);
+  const { SetLogin, SetIsLogin, SetEmails } = useContext(AppContext);
 
   const [Email, SetEmail] = useState<string>();
   const [Password, SetPassword] = useState<string>();
   const [Error, SetError] = useState<string | null>(null);
+  const [Success, SetSuccess] = useState<boolean>(false);
+  const [Wait, SetWait] = useState<boolean>(false);
   const router = useRouter();
 
   const LoginUser = async () => {
@@ -39,24 +41,32 @@ function Login() {
       SetError("رمز عبور باید حداقل ۴ کاراکتر باشد");
       return;
     }
+
+    SetWait(true);
     /* Fetch Users */
-    const data = await fetch("https://medicalequipment-project.onrender.com/api/v1/login/", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: Email, password: Password }),
-    });
-    const result : IApi = await data.json();
+    const data = await fetch(
+      "https://medicalequipment-project.onrender.com/api/v1/login/",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: Email, password: Password }),
+      }
+    );
+    const result: IApi = await data.json();
 
     if (result.token && result.refresh) {
-      console.log(result); // for test
+      SetWait(false);
+      SetSuccess(true);
       localStorage.setItem("token", result.token);
       localStorage.setItem("refresh", result.refresh);
       localStorage.setItem("username", result.username);
+      localStorage.setItem("Email", Email);
       SetLogin(result.username);
       SetIsLogin(true);
+      SetEmails(Email);
       router.push("/");
     } else {
       SetError(result.error);
@@ -84,7 +94,11 @@ function Login() {
               name="Email"
               onChange={(e) => SetEmail(e.target.value)}
               required
-              className="w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200"
+              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] outline-none whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
+                Error
+                  ? "border-2 border-red-500"
+                  : " border-3 border-emerald-900"
+              }`}
             />
             <input
               type="password"
@@ -92,7 +106,11 @@ function Login() {
               required
               name="Password"
               onChange={(e) => SetPassword(e.target.value)}
-              className="w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200"
+              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 outline-none  ${
+                Error
+                  ? "border-2 border-red-500"
+                  : " border-3 border-emerald-900"
+              }`}
             />
             <Button
               className="p-2 bg-[#2f3538] rounded-[8px] h-[55px] w-full"
@@ -107,11 +125,22 @@ function Login() {
                 {Error}
               </div>
             )}
+            {Success && (
+              <div className="w-full bg-emerald-700 border border-emerald-500 text-emerald-100 px-4 py-2 rounded-2xl mt-2 text-center">
+                ورود موفقیت آمیز بود درحال انتقال به صفحه اصلی...
+              </div>
+            )}
+            {Wait && (
+              <div className="w-full bg-blue-700 border border-blue-500 text-blue-100 px-4 py-2 rounded-2xl mt-2 text-center">
+                لطفا کمی صبر کنید...
+              </div>
+            )}
             <p className="p-2">
               هنوز ثبت نام نکردی؟
               <Link
                 className="font-semibold text-white hover:text-[d8d5d5] transition-all duration-200 mx-2"
-                href={"./register"}
+                href={"/register"}
+                prefetch={false}
               >
                 ثبت نام
               </Link>
@@ -121,13 +150,6 @@ function Login() {
       </div>
     </Container>
   );
-
-  /*
-      {
-        "message": "Login successful",
-        "token": "eyJhbGciOiJIUzI1NiIs..."
-      }
-    */
 }
 
 export default Login;
