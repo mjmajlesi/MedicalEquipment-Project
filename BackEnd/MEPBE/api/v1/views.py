@@ -2,7 +2,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.exceptions import APIException
 from django.db import IntegrityError
 from rest_framework_simplejwt.tokens import RefreshToken
 from login.serializers import UserSerializer
@@ -18,6 +17,9 @@ def get_tokens__for_user(user):
 
 
 from django.contrib.auth.models import User
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -39,7 +41,7 @@ def sign_up_page(request):
             user.save()
             tokens = get_tokens__for_user(user)
             return Response({
-                "message": "User created and logged in successfully",
+                "message": "ثبت‌نام موفقیت‌آمیز بود",
                 "username": user.username,
                 "token": tokens["access"],
                 "refresh": tokens["refresh"]
@@ -51,7 +53,7 @@ def sign_up_page(request):
         return Response({"error": "خطای تکراری بودن داده‌ها"}, status=status.HTTP_400_BAD_REQUEST)
     
     except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"error": "مشکلی در ثبت‌نام پیش آمد: " + str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 @api_view(['POST'])
