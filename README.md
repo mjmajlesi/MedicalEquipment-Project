@@ -2,11 +2,8 @@
 The Medical Equipment Web App for FroghTeb Ronak Sina in Hamadan 
 
 ## images
-<div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-  <img src="./FrontEnd/public/Home.png" width="100%" height="100%"/>
-  <img src="./FrontEnd/public/phone.png" width="200" height="400"/>
-</div>
-
+<img src="./FrontEnd/public/Home.png" width="100%" height="100%"/>
+  
 ## Description
 This project was developed for FroghTeb Ronak Sina, utilizing TypeScript and the Next.js framework for the frontend, and Python with Django REST Framework for the backend. The web application features a modern, visually appealing, and fully responsive design, ensuring a seamless and user-friendly experience across all devices. The implementation emphasizes both functionality and professionalism, making it suitable for formal use in a medical equipment context.
 
