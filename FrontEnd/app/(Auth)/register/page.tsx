@@ -24,6 +24,7 @@ function Register() {
 
   const LoginUser = async () => {
     /* Controls errors */
+    SetError(null); // Reset error state
     if (!Email || !Password || !Username) {
       SetError("لطفا نام کاربری و ایمیل و رمز عبور خود را وارد کنید.");
       return;
@@ -60,6 +61,12 @@ function Register() {
     );
     const result: IApi = await data.json();
 
+    if (result.error) {
+      SetError(result.error);
+      SetWait(false);
+      return;
+    }
+
     if (result.token && result.refresh) {
       SetWait(false);
       SetSuccess(true);
@@ -71,8 +78,6 @@ function Register() {
       SetIsLogin(true);
       SetEmails(Email);
       router.push("/");
-    } else {
-      SetError(result.error);
     }
   };
 
@@ -93,7 +98,7 @@ function Register() {
           <div className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
             <input
               type="text"
-              placeholder="نام کاربری"
+              placeholder="نام کاربری(فارسی)"
               name="username"
               onChange={(e) => SetUsername(e.target.value)}
               required

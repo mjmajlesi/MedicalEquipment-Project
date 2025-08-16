@@ -29,6 +29,7 @@ function Login() {
 
   const LoginUser = async () => {
     /* Controls errors */
+    SetError(null); // Reset error state
     if (!Email || !Password) {
       SetError("لطفا ایمیل و رمز عبور خود را وارد کنید.");
       return;
@@ -57,6 +58,12 @@ function Login() {
     );
     const result: IApi = await data.json();
 
+    if (result.error) {
+      SetError(result.error);
+      SetWait(false);
+      return;
+    }
+
     if (result.token && result.refresh) {
       SetWait(false);
       SetSuccess(true);
@@ -68,8 +75,6 @@ function Login() {
       SetIsLogin(true);
       SetEmails(Email);
       router.push("/");
-    } else {
-      SetError(result.error);
     }
   };
 
