@@ -17,11 +17,22 @@ def get_tokens__for_user(user):
     }
 
 
+from django.contrib.auth.models import User
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def sign_up_page(request):
     try:
         serializer = UserSerializer(data=request.data)
+
+        email = request.data.get("email")
+        if User.objects.filter(email=email).exists():
+            return Response({"error": "این ایمیل قبلا ثبت شده است"}, status=status.HTTP_400_BAD_REQUEST)
+
+        username = request.data.get("username")
+        if User.objects.filter(username=username).exists():
+            return Response({"error": "این نام کاربری قبلا استفاده شده است"}, status=status.HTTP_400_BAD_REQUEST)
+
         if serializer.is_valid():
             user = serializer.save()
             user.set_password(serializer.validated_data["password"])
@@ -33,12 +44,11 @@ def sign_up_page(request):
                 "token": tokens["access"],
                 "refresh": tokens["refresh"]
             }, status=status.HTTP_201_CREATED)
-        elif not serializer.is_valid():
-            print("Validation errors:", serializer.errors)
+        else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     except IntegrityError:
-        return Response({"error": "این ایمیل یا نام کاربری در حال حاضر وجود دارد"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": "خطای تکراری بودن داده‌ها"}, status=status.HTTP_400_BAD_REQUEST)
     
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

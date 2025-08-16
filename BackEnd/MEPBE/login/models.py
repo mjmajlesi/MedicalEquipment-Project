@@ -29,8 +29,8 @@ class UserManager(BaseUserManager):
     
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, max_length=250)
-    username = models.CharField(unique=True, max_length=100)
-    slug = models.SlugField(unique=True, blank=True)
+    username = models.CharField(max_length=100)
+    slug = models.SlugField(blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_join = models.DateTimeField(default=timezone.now)
