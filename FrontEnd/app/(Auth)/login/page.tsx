@@ -89,7 +89,7 @@ function Login() {
           duration={1.5}
           className="flex flex-col w-full md:w-5/12 xl:mx-1 p-2 "
         >
-          <span className="font-bold text-3xl text-amber-50 text-center ">
+          <span className="font-bold text-3xl md:text-4xl text-center ">
             صفحه ورود
           </span>
           <div className=" flex items-center md:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
@@ -99,7 +99,7 @@ function Login() {
               name="Email"
               onChange={(e) => SetEmail(e.target.value)}
               required
-              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] outline-none whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
+              className={`w-full p-2 bg-[#ffffff] overflow-x-auto h-[66px] outline-none whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 ${
                 Error
                   ? "border-2 border-red-500"
                   : " border-3 border-emerald-900"
@@ -111,7 +111,7 @@ function Login() {
               required
               name="Password"
               onChange={(e) => SetPassword(e.target.value)}
-              className={`w-full p-2 bg-[#f5f5f5] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 outline-none  ${
+              className={`w-full p-2 bg-[#ffffff] overflow-x-auto h-[66px] whitespace-nowrap rounded-[8px] text-[#212121] transition-all duration-200 outline-none  ${
                 Error
                   ? "border-2 border-red-500"
                   : " border-3 border-emerald-900"
@@ -143,7 +143,7 @@ function Login() {
             <p className="p-2">
               هنوز ثبت نام نکردی؟
               <Link
-                className="font-semibold text-white hover:text-[d8d5d5] transition-all duration-200 mx-2"
+                className="font-semibold hover:text-[d8d5d5] transition-all duration-200 mx-2"
                 href={"/register"}
                 prefetch={false}
               >

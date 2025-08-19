@@ -1,5 +1,5 @@
 import Container from "@/Components/Container";
-import { IProducts } from "@/Components/Product/Product";
+import { IProducts } from "@/Components/Product/Products";
 import Image from "next/image";
 import React from "react";
 
@@ -35,7 +35,7 @@ async function ProductPage(props: Iparams) {
               alt={data.title}
               width={350}
               height={350}
-              className="w-[350px] h-[350px] object-cover rounded-[32px]"
+              className="md:w-[400px] w-[300px] h-[350px] md:h-[500px] object-cover rounded-[32px]"
             />
           </div>
           <div className="flex flex-col items-start gap-6 w-full ">
