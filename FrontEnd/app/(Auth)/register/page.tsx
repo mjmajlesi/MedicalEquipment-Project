@@ -92,7 +92,7 @@ function Register() {
           duration={1.5}
           className="flex flex-col w-full md:w-2/3 xl:w-1/3 xl:mx-1 p-2 "
         >
-          <span className="font-bold text-3xl text-amber-50 text-center ">
+          <span className="font-bold text-3xl text-center ">
             صفحه ثبت نام
           </span>
           <div className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
@@ -170,7 +170,7 @@ function Register() {
             <p className="p-2">
               قبلا ثبت نام کردی؟
               <Link
-                className="font-semibold  text-white hover:text-[d8d5d5] transition-all duration-200 mx-2"
+                className="font-semibold hover:text-[d8d5d5] transition-all duration-200 mx-2"
                 href={"/login"}
                 prefetch={false}
               >

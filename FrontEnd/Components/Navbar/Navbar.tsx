@@ -59,24 +59,16 @@ function Navbar() {
         }`}
       >
         <div className=" py-4 not-lg:w-full not-lg:flex not-lg:justify-between not-lg:items-center">
-          <Image
-            className="rounded-2xl not-lg:hidden"
-            width={80}
-            height={80}
-            src={logo}
-            alt="Logo"
-            priority
-          />
           <div className="Login lg:hidden mr-5">
             {isLogin ? (
               <ProfileMenu />
             ) : (
-              <div className="flex items-center gap-6 ">
+              <div className="flex items-center gap-3 ">
                 <Button className="rounded-xl text-white md:py-4 md:px-6 py-3 px-4 text-[18px] md:text-[20px] font-semibold bg-[#3a9b9b] active:bg-[#2a7a7a]">
                   <Link href={"/login"}>ورود</Link>
                 </Button>
                 <button
-                  className="rounded-xl h-[45px] w-[45px] md:w-[60px] md:h-[60px] cursor-pointer bg-[#f6f6f6] text-[#222222] flex items-center justify-center hover:bg-gray-300 transition-all duration-300 ease-in-out md:p-1 p-2"
+                  className="rounded-xl h-[45px] w-[45px] md:w-[60px] md:h-[60px] cursor-pointer bg-[#f6f6f6] text-[#222222] flex items-center justify-center hover:bg-gray-300 transition-all duration-300 ease-in-out md:p-1 p-2 not-sm:hidden"
                   onClick={SaveTheme}
                 >
                   {mounted ? (
@@ -92,13 +84,21 @@ function Navbar() {
               </div>
             )}
           </div>
+          <Image
+            className="rounded-2xl"
+            width={80}
+            height={80}
+            src={logo}
+            alt="Logo"
+            priority
+          />
           <div
             onClick={toggleNav}
             className="lg:hidden flex flex-col justify-between w-[35px] h-[30px] ml-5"
           >
-            <span className="h-[5px] w-full bg-white rounded-md"></span>
-            <span className="h-[5px] w-full bg-white rounded-md"></span>
-            <span className="h-[5px] w-full bg-white rounded-md"></span>
+            <span className="h-[5px] w-full bg-theme-div rounded-md"></span>
+            <span className="h-[5px] w-full bg-theme-div rounded-md"></span>
+            <span className="h-[5px] w-full bg-theme-div rounded-md"></span>
           </div>
         </div>
         <div
