@@ -1,17 +1,19 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, Home, Settings, Store, Power } from "lucide-react";
-import Image from "next/image";
+import { Moon, Sun, Home, Store, Power } from "lucide-react";
 import { AppContext } from "@/Context/AppContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function ProfileMenu() {
   const { Login, Emails, SetLogin, SetIsLogin } = useContext(AppContext);
+  const {setTheme, resolvedTheme, theme } = useTheme();
   const [open, setOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const LoginOut = () => {
     localStorage.removeItem("token");
@@ -24,11 +26,14 @@ export default function ProfileMenu() {
     router.push("/login");
   };
 
+  const SaveTheme = () => {
+    setTheme(resolvedTheme === "light" ? "dark" : "light");
+  };
+
   return (
     <div className="relative">
-      {/* آواتار */}
       <div
-        className="rounded-full w-[50px] h-[50px] bg-white text-black cursor-pointer"
+        className="rounded-full w-[60px] h-[60px] bg-theme-div text-black-theme cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         <span className="flex items-center justify-center w-full h-full text-[18px] font-semibold">
@@ -36,7 +41,6 @@ export default function ProfileMenu() {
         </span>
       </div>
 
-      {/* منو */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -46,9 +50,8 @@ export default function ProfileMenu() {
             transition={{ duration: 0.2 }}
             className="absolute right-0 mt-2 w-64 bg-gray-900 text-white rounded-xl z-10 shadow-lg p-4"
           >
-            {/* اطلاعات کاربر */}
             <div className="flex flex-col items-center border-b border-gray-700 pb-3">
-              <div className="rounded-full w-[60px] h-[60px] bg-white text-black">
+              <div className="rounded-full w-[60px] h-[60px] bg-theme-div text-black-theme">
                 <span className="flex items-center justify-center w-full h-full text-[18px] font-semibold">
                   {Login[0]}
                 </span>
@@ -56,8 +59,6 @@ export default function ProfileMenu() {
               <h3 className="mt-2 font-semibold">{Login}</h3>
               <p className="text-gray-400 text-sm">{Emails}</p>
             </div>
-
-            {/* لینک‌ها */}
             <ul className="mt-3 space-y-2">
               <li className=" hover:bg-gray-800 p-2 rounded-md cursor-pointer">
                 <Link href={"/"} className="flex items-center gap-2">
@@ -72,13 +73,21 @@ export default function ProfileMenu() {
                   <Store size={18} /> محصولات
                 </Link>
               </li>
-              {/* <li
+              <li
                 className="flex items-center gap-2 hover:bg-gray-800 p-2 rounded-md cursor-pointer"
-                onClick={() => setDarkMode(!darkMode)}
+                onClick={SaveTheme}
               >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-                Dark Mode
-              </li> */}
+                {mounted ? (
+                  resolvedTheme === "light" ? (
+                    <Sun size={30} />
+                  ) : (
+                    <Moon size={30} />
+                  )
+                ) : (
+                  <Sun size={30} />
+                )}
+                {theme} Mode
+              </li>
             </ul>
 
             <div
