@@ -17,7 +17,7 @@ async function Product({id , products} : IProduct) {
           product.id <= id && (
             <Link href={`/products/${product.id}`} key={product.id}>
               <div
-                className="relative w-[230px] sm:w-[350px] h-[480px] sm:h-[500px] lg:h-[500px] rounded-[22px] bg-[#f2f2f7] px-2.5 pt-2.5 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
+                className="relative w-[280px] sm:w-[350px] h-[450px] sm:h-[500px] lg:h-[500px] rounded-[22px] bg-[#f2f2f7] px-2.5 pt-2.5 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
                 <Image
                 src={product.image}
                 alt={product.title}
@@ -30,7 +30,7 @@ async function Product({id , products} : IProduct) {
                 <h3 className="font-bold text-gray-800 text-[20px] lg:text-[24px] mt-5 line-clamp-1">
                   {product.title}
                 </h3>
-                <span className="lg:line-clamp-2 text-[14px] text-black opacity-60 line-clamp-1 ">
+                <span className="line-clamp-2 text-[14px] text-black opacity-60 ">
                   {product.description}
                 </span>
               </div>

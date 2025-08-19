@@ -29,7 +29,7 @@ function Contact() {
             <div className="footerMapContainer rounded-[10px] h-[250px] w-[300px] md:h-[350px] md:w-full border-2 my-8 ">
               <Map />
             </div>
-            <div className="GroupCards bg-theme-div-text p-2 sm:px-5 sm:py-3 rounded-2xl flex flex-col items-end justify-center gap-2 w-[300px] sm:w-full">
+            <div className="GroupCards bg-theme-div-text p-2 sm:px-5 sm:py-3 rounded-2xl flex flex-col items-end justify-center gap-2 w-full">
               <div className="flex justify-center gap-2 items-center px-4 py-2 rounded-2xl">
                 <CopiedButtun
                   text="08132515434"
@@ -49,19 +49,19 @@ function Contact() {
               <div className="flex justify-center gap-2 items-center px-4 py-2 rounded-2xl">
                 <CopiedButtun
                   text="farajianzadeh.majid@gmail.com"
-                  className="flex-1 text-[16px] md:text-[18px] cursor-pointer font-semibold text-center"
+                  className="flex-1 text-[16px] md:text-[18px] cursor-pointer font-semibold text-center break-words max-w-[180px] sm:max-w-full"
                 />
                 <BiLogoGmail className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] bg-[#42a0a4] text-white rounded-full shadow-md p-2 flex-shrink-0" />
               </div>
               <span className="h-[2px] bg-theme-white w-full" />
 
-                <div className="flex justify-center gap-2 items-center px-4 py-2 rounded-2xl">
+              <div className="flex justify-center gap-2 items-center px-4 py-2 rounded-2xl">
                 <CopiedButtun
                   text="همدان، میدان آرامگاه بوعلی سینا، مرکز اداری الماس (ساختمان شماره 1)، طبقه چهارم، واحد 37"
                   className="flex-1 text-[16px] md:text-[18px] cursor-pointer font-semibold text-center"
                 />
                 <PiMapPinAreaBold className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] bg-[#42a0a4] text-white rounded-full shadow-md p-2 flex-shrink-0" />
-                </div>
+              </div>
             </div>
           </div>
         </AnimateDivs>
