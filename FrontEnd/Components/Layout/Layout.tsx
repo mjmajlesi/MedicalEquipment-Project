@@ -1,14 +1,13 @@
 "use client";
-import {AppContext} from "@/Context/AppContext";
+import { AppContext } from "@/Context/AppContext";
 import React, { useEffect, useState } from "react";
+import { ThemeProvider } from "next-themes";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const [Login, SetLogin] = useState<string>("");
+  const [isLogin, SetIsLogin] = useState<boolean>(false);
+  const [Emails, SetEmails] = useState<string>("");
 
-  const [Login , SetLogin] = useState<string>("")
-  const [isLogin , SetIsLogin] = useState<boolean>(false)
-  const [Emails , SetEmails] = useState<string>("")
-
-  
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
     const savedUsername = localStorage.getItem("username");
@@ -20,13 +19,16 @@ function Layout({ children }: { children: React.ReactNode }) {
       SetEmails(savedEmail);
     }
   }, []);
-  
 
   return (
-  <AppContext.Provider value={{Login, SetLogin, isLogin, SetIsLogin, Emails, SetEmails}}>
-    {children}
-  </AppContext.Provider>
-  )
+  <ThemeProvider attribute="data-theme" defaultTheme="system">
+      <AppContext.Provider
+        value={{ Login, SetLogin, isLogin, SetIsLogin, Emails, SetEmails }}
+      >
+        {children}
+      </AppContext.Provider>
+  </ThemeProvider>
+  );
 }
 
 export default Layout;
