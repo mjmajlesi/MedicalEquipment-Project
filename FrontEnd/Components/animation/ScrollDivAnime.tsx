@@ -17,10 +17,10 @@ function ScrollDivAnime({text , widthLeft , widthRight , className} : Iscrolldiv
   return (
     <div
       ref={ref}
-      className="flex items-center justify-start w-full gap-3"
+      className="flex items-center justify-start w-full gap-4 md:gap-5"
     >
       <motion.span
-        className={`bg-[#3A3A41] h-[2px] flex-grow ${widthRight == 0 && "hidden"}`}
+        className={`bg-theme-white h-[2px] flex-grow ${widthRight == 0 && "hidden"}`}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: inView ? widthRight : 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
@@ -34,7 +34,7 @@ function ScrollDivAnime({text , widthLeft , widthRight , className} : Iscrolldiv
       </h1>
 
       <motion.span
-        className="bg-[#3A3A41] h-[2px] flex-grow"
+        className="bg-theme-white h-[2px] flex-grow"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: inView ? widthLeft : 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}

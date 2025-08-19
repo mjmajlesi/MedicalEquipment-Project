@@ -21,7 +21,7 @@ function Footer() {
         </div>
         <hr />
         <div className="flex items-center justify-between my-5 ">
-          <span className="text-[#e6dede] lg:text-base text-[12px] ">تمامی حقوق متعلق به شرکت فروغ طب روناک سینا می‌باشد</span>
+          <span className=" font-semibold md:text-base text-[12px] ">تمامی حقوق متعلق به شرکت فروغ طب روناک سینا می‌باشد</span>
           {/* <span className="not-md:hidden">طراحی شده توسط محمد جواد مجلسی</span> */}
           <div className="media">
             <a href="#" target="_blank"><FaInstagram size={30} /></a>
