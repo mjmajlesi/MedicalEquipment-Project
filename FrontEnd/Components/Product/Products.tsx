@@ -25,7 +25,7 @@ async function Products() {
           duration={1}
           delay={0}
           y={5}
-          className="flex  flex-col items-center md:justify-center gap-6 lg:gap-10"
+          className="flex flex-col items-center md:justify-center gap-8"
         >
           <ScrollDivAnime
             text="محصولات"
@@ -33,12 +33,15 @@ async function Products() {
             widthRight={1}
             className="font-bold text-[30px] md:text-[36px] lg:text-[48px]"
           />
-          <div className="flex flex-col items-center gap-6 md:gap-6 md:grid md:grid-cols-2 md:grid-rows-3 xl:hidden">
+          <div className="flex flex-col items-center gap-6 md:gap-6 md:grid md:grid-cols-2 md:grid-rows-2 xl:hidden">
             <Product id={4} products={data} />
           </div>
           <div className="not-xl:hidden">
             <SwiperProducts products={data} />
           </div>
+            <Button className="px-6 py-4 rounded-xl text-[18px] font-semibold bg-[#51BCBF] text-white shadow-lg hover:bg-[#3a9b9b] transition lg:hidden">
+              <Link href={"/products"}>مشاهده همه محصولات</Link>
+            </Button>
         </AnimateDivs>
       </Container>
     </div>
