@@ -15,7 +15,7 @@ function Navbar() {
   const path = usePathname();
   const router = useRouter();
   const { SetLogin, SetIsLogin, isLogin } = useContext(AppContext);
-  const { resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme , theme } = useTheme();
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -84,14 +84,16 @@ function Navbar() {
               </div>
             )}
           </div>
-          <Image
-            className="rounded-2xl"
-            width={80}
-            height={80}
-            src={logo}
-            alt="Logo"
-            priority
-          />
+          <Link href={"/"}>
+            <Image
+              className="rounded-2xl cursor-pointer"
+              width={80}
+              height={80}
+              src={logo}
+              alt="Logo"
+              priority
+            />
+          </Link>
           <div
             onClick={toggleNav}
             className="lg:hidden flex flex-col justify-between w-[35px] h-[30px] ml-5"
@@ -133,6 +135,21 @@ function Navbar() {
                 <Phone size={18} />
                 تماس با ما
               </span>
+              <button
+                className={`${isNav && "hidden"} flex items-center gap-2 hover:bg-gray-800 p-2 rounded-md cursor-pointer`}
+                onClick={SaveTheme}
+              >
+                {mounted ? (
+                  resolvedTheme === "light" ? (
+                    <Sun size={25} />
+                  ) : (
+                    <Moon size={25} />
+                  )
+                ) : (
+                  <Sun size={25} />
+                )}
+                {theme} mode
+              </button>
             </>
           ) : (
             <>

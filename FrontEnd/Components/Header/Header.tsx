@@ -18,7 +18,7 @@ function Header() {
            lg:mt-0"
         >
           <AnimateDivs className="" duration={1.3} delay={0.2} y={20}>
-            <h1 className="max-w-2xl not-md:text-center text-theme text-[32px] md:text-[36px] xl:text-[40px] 2xl:text-[58px] font-extrabold leading-tight">
+            <h1 className="max-w-2xl not-md:text-center text-theme text-[32px] md:text-[36px] xl:text-[40px] 2xl:text-[50px] font-extrabold leading-tight">
               تفاوت را با خدمات صادقانه ما در حوزه پزشکی تجربه کنید
             </h1>
           </AnimateDivs>
@@ -28,7 +28,7 @@ function Header() {
             delay={0.25}
             y={20}
           >
-            <h2 className="max-w-xl not-md:text-center text-[18px] xl:text-[22px] md:text-xl md:leading-[34px] md:text-justify font-medium text-gray">
+            <h2 className="max-w-xl not-md:text-center text-[18px] md:text-xl md:leading-[34px] md:text-justify font-medium text-gray">
               خرید تجهیزات پزشکی و آزمایشگاهی با بهترین و مناسب‌ ترین قیمت‌ها.
               کیفیت عالی، محصولات نو و دست دوم با شرایط ویژه. برای مشاهده و
               آشنایی بیشتر با محصولات، به صفحه محصولات مراجعه فرمایید.
