@@ -148,7 +148,7 @@ function Navbar() {
                 ) : (
                   <Sun size={25} />
                 )}
-                {theme} mode
+                <span className="hover-bg-theme flex items-center gap-1 text-[20px] font-semibold cursor-pointer"> حالت {theme === "light" ? "روشن" : "دارک"}</span>
               </button>
             </>
           ) : (
