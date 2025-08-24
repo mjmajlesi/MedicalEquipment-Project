@@ -21,7 +21,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-  <ThemeProvider attribute="data-theme" defaultTheme="system">
+  <ThemeProvider attribute="data-theme" defaultTheme="light">
       <AppContext.Provider
         value={{ Login, SetLogin, isLogin, SetIsLogin, Emails, SetEmails }}
       >
