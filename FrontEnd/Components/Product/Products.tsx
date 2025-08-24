@@ -6,6 +6,7 @@ import AnimateDivs from "../animation/animateDivs";
 import Button from "../buttuns";
 import ScrollDivAnime from "../animation/ScrollDivAnime";
 import SwiperProducts from "./SwiperProducts";
+import { GoArrowLeft } from "react-icons/go";
 
 export interface IProducts {
   id: number;
@@ -36,7 +37,11 @@ async function Products() {
           <div className="flex flex-col items-center gap-6 md:gap-6 md:grid md:grid-cols-2 md:grid-rows-2 xl:hidden">
             <Product id={4} products={data} />
           </div>
-          <div className="not-xl:hidden">
+          <div className="not-xl:hidden flex flex-col gap-2">
+            <Link className="self-end cursor-pointer hover:scale-103 transition duration-200 flex items-center gap-2 text-theme-text font-semibold" href={"/products"}>
+            <span className="border-b-2">مشاهده محصولات</span>
+            <GoArrowLeft size={22} />
+            </Link>
             <SwiperProducts products={data} />
           </div>
             <Button className="px-6 py-4 rounded-xl text-[18px] font-semibold bg-[#51BCBF] text-white shadow-lg hover:bg-[#3a9b9b] transition lg:hidden">

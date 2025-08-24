@@ -46,6 +46,10 @@ body {
   background-color: var(--div-text);
 }
 
+.text-theme-text {
+  color: var(--div-text);
+}
+
 .hover-bg-theme:hover {
   background-color: var(--hover-bg);
 }
