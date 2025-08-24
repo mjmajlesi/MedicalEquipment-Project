@@ -9,7 +9,8 @@ import { useTheme } from "next-themes";
 
 export default function ProfileMenu() {
   const { Login, Emails, SetLogin, SetIsLogin } = useContext(AppContext);
-  const {setTheme, resolvedTheme, theme } = useTheme();
+  const { setTheme, resolvedTheme, theme } = useTheme();
+  const [themePersian, SetThemePersian] = useState<string>("روشن");
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -28,6 +29,7 @@ export default function ProfileMenu() {
 
   const SaveTheme = () => {
     setTheme(resolvedTheme === "light" ? "dark" : "light");
+    SetThemePersian(resolvedTheme === "light" ? "تاریک" : "روشن");
   };
 
   return (
@@ -86,7 +88,7 @@ export default function ProfileMenu() {
                 ) : (
                   <Sun size={30} />
                 )}
-                {theme} Mode
+                <span>حالت {themePersian}</span>
               </li>
             </ul>
 

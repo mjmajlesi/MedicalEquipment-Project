@@ -15,13 +15,14 @@ function Navbar() {
   const path = usePathname();
   const router = useRouter();
   const { SetLogin, SetIsLogin, isLogin } = useContext(AppContext);
-  const { resolvedTheme, setTheme , theme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [themePersian , SetThemePersian] = useState<string>("روشن");
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   const navstyle =
-    "hover-bg-theme text-[20px] py-2 px-3 hover:rounded-md flex items-center gap-2  text-[18px] font-semibold cursor-pointer";
+    "hover-bg-theme text-[20px] py-2 px-3 hover:rounded-md flex items-center gap-2 font-semibold cursor-pointer";
 
   const [isNav, SetIsNav] = useState(true);
   const toggleNav = () => {
@@ -47,6 +48,7 @@ function Navbar() {
 
   const SaveTheme = () => {
     setTheme(resolvedTheme === "light" ? "dark" : "light");
+    SetThemePersian(resolvedTheme === "light" ? "تاریک" : "روشن");
   };
 
   return (
@@ -87,8 +89,8 @@ function Navbar() {
           <Link href={"/"}>
             <Image
               className="rounded-2xl cursor-pointer"
-              width={80}
-              height={80}
+              width={75}
+              height={75}
               src={logo}
               alt="Logo"
               priority
@@ -136,7 +138,7 @@ function Navbar() {
                 تماس با ما
               </span>
               <button
-                className={`${isNav && "hidden"} flex items-center gap-2 hover:bg-gray-800 p-2 rounded-md cursor-pointer`}
+                className={`${isNav && "hidden"} flex items-center gap-2 p-2 rounded-md cursor-pointer`}
                 onClick={SaveTheme}
               >
                 {mounted ? (
@@ -148,7 +150,7 @@ function Navbar() {
                 ) : (
                   <Sun size={25} />
                 )}
-                <span className="hover-bg-theme flex items-center gap-1 text-[20px] font-semibold cursor-pointer"> حالت {theme === "light" ? "روشن" : "دارک"}</span>
+                <span className="flex items-center gap-1 text-[20px] hover:rounded-md font-semibold cursor-pointer"> حالت {themePersian}</span>
               </button>
             </>
           ) : (
