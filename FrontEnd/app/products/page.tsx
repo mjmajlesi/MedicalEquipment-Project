@@ -9,7 +9,7 @@ async function page() {
     <>
       <Container>
         <div className="flex flex-col items-center gap-8 my-8 md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-cols-4 xl:grid-rows-2 xl:gap-12">
-          <Product id={10000} products={data} />
+          <Product products={data} />
         </div>
       </Container>
     </>

@@ -15,7 +15,7 @@ function Map() {
   });
   return (
     <MapContainer
-      center={[34.7914549, 48.5136892]}
+      center={[34.7920472, 48.5126804]}
       zoom={17}
       style={{ height: "100%", width: "100%" , borderRadius : "10px" }}
     >
@@ -23,7 +23,7 @@ function Map() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[34.7915191, 48.5129755]} icon={customIcon}>
+      <Marker position={[34.7922462, 48.5128111]} icon={customIcon}>
         <Popup>مرکز اداری الماس  طبقه چهارم  واحد37</Popup>
       </Marker>
     </MapContainer>
