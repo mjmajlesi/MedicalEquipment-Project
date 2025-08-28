@@ -7,11 +7,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import Link from "next/link";
-import { IProducts } from "./Products";
+import { IProduct } from "./Product";
 
-function SwiperProducts({ products }: { products: IProducts[] }) {
+function SwiperProducts({ products , id = 0 }: IProduct) {
   return (
-    <div className="max-w-[1350px] p-4">
+    <div className="max-w-[1500px] p-4">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
@@ -21,9 +21,10 @@ function SwiperProducts({ products }: { products: IProducts[] }) {
         className="product-swiper"
       >
         {products.map((product) => (
+          product.id >= id &&
           <SwiperSlide key={product.id} className="flex justify-center">
             <Link href={`/products/${product.id}`}>
-              <div className="relative w-[300px] h-[500px] rounded-[22px] bg-[#f2f2f7] px-2.5 pt-2.5 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
+              <div className="relative w-[330px] h-[500px] rounded-[22px] bg-[#f2f2f7] px-2.5 pt-2.5 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
                 <Image
                   src={product.image}
                   alt={product.title}
