@@ -4,22 +4,33 @@ import React, { useContext, useState, useEffect } from "react";
 import Button from "../buttuns";
 import Container from "../Container";
 import Image from "next/image";
-import logo from "../../public/Logo.png";
+import logo from "../../public/LogoWeb.jpg";
 import { usePathname, useRouter } from "next/navigation";
 import { AppContext } from "@/Context/AppContext";
 import { useTheme } from "next-themes";
 import ProfileMenu from "./Avatar";
 import { Phone, Home, Store, Highlighter, Moon, Sun } from "lucide-react";
+import SmoothButton from "../SmoothButtun";
 
 function Navbar() {
   const path = usePathname();
   const router = useRouter();
   const { SetLogin, SetIsLogin, isLogin } = useContext(AppContext);
   const { resolvedTheme, setTheme } = useTheme();
-  const [themePersian , SetThemePersian] = useState<string>("روشن");
+  const [themePersian, SetThemePersian] = useState<string>("روشن");
 
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const [innerWidth, setInnerWidth] = useState<number | null>(null);
+  useEffect(() => {
+    setMounted(true);
+    if (typeof window !== "undefined") {
+      const update = () => setInnerWidth(window.innerWidth);
+      update();
+      window.addEventListener("resize", update);
+      return () => window.removeEventListener("resize", update);
+    }
+    return;
+  }, []);
 
   const navstyle =
     "hover-bg-theme text-[20px] py-2 px-3 hover:rounded-md flex items-center gap-2 font-semibold cursor-pointer";
@@ -88,7 +99,11 @@ function Navbar() {
           </div>
           <Link href={"/"}>
             <Image
-              className="rounded-2xl cursor-pointer"
+              className={`rounded-2xl cursor-pointer ${
+                innerWidth !== null && innerWidth < 480
+                  ? "w-[70px]"
+                  : "w-[100px]"
+              }`}
               width={75}
               height={75}
               src={logo}
@@ -116,29 +131,22 @@ function Navbar() {
                 <Home size={18} />
                 خانه
               </Link>
-              <span
-                className={navstyle}
-                onClick={() => scrollSmooth("Products")}
-              >
-                <Store size={18} />
-                محصولات
-              </span>
-              <span
-                className={navstyle}
-                onClick={() => scrollSmooth("Aboutme")}
-              >
+              <SmoothButton link="Aboutme" classname={navstyle}>
                 <Highlighter size={18} />
                 درباره ما
-              </span>
-              <span
-                className={navstyle}
-                onClick={() => scrollSmooth("Contact")}
-              >
+              </SmoothButton>
+              <SmoothButton link="Products" classname={navstyle}>
+                <Store size={18} />
+                محصولات
+              </SmoothButton>
+              <SmoothButton link="Contact" classname={navstyle}>
                 <Phone size={18} />
                 تماس با ما
-              </span>
+              </SmoothButton>
               <button
-                className={`${isNav && "hidden"} flex items-center gap-2 p-2 rounded-md cursor-pointer`}
+                className={`${
+                  isNav && "hidden"
+                } flex items-center gap-2 p-2 rounded-md cursor-pointer`}
                 onClick={SaveTheme}
               >
                 {mounted ? (
@@ -150,7 +158,10 @@ function Navbar() {
                 ) : (
                   <Sun size={25} />
                 )}
-                <span className="flex items-center gap-1 text-[20px] hover:rounded-md font-semibold cursor-pointer"> حالت {themePersian}</span>
+                <span className="flex items-center gap-1 text-[20px] hover:rounded-md font-semibold cursor-pointer">
+                  {" "}
+                  حالت {themePersian}
+                </span>
               </button>
             </>
           ) : (
