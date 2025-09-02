@@ -47,7 +47,7 @@ function Header() {
                 className="px-6 py-4 rounded-xl text-[18px] not-md:hidden font-semibold bg-[#51BCBF] text-white shadow-lg hover:bg-[#3a9b9b] transition"
                 aria-label="ارتباط با ما"
               >
-                <SmoothButton link="Aboutme">
+                <SmoothButton link="Contact">
                   ارتباط با ما
                 </SmoothButton>
               </Button>

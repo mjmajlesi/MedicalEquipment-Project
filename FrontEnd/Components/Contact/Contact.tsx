@@ -49,7 +49,7 @@ function Contact() {
               <div className="flex justify-center gap-2 items-center px-4 py-2 rounded-2xl">
                 <CopiedButtun
                   text="farajianzadeh.majid@gmail.com"
-                  className="flex-1 text-[16px] md:text-[18px] cursor-pointer font-semibold text-center break-words max-w-[180px] sm:max-w-full"
+                  className="flex-1 text-[16px] md:text-[18px] cursor-pointer font-semibold text-center break-words max-w-[300px] sm:max-w-full"
                 />
                 <BiLogoGmail className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] bg-[#42a0a4] text-white rounded-full shadow-md p-2 flex-shrink-0" />
               </div>
