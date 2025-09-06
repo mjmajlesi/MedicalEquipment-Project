@@ -3,7 +3,6 @@ import Container from "../Container";
 import { IoAdd } from "react-icons/io5";
 import AnimateDivs from "../animation/animateDivs";
 import ScrollDivAnime from "../animation/ScrollDivAnime";
-import SwiperComp from "../Header/Swiper";
 
 export const gradiantText =
   "bg-gradient-to-r from-[#8B8B8B] via-black to-[#A4A4A4] bg-clip-text ";

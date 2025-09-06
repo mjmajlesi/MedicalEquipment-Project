@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-@1d^plknc3q+c=mm#bqf53tpx!0&2t0p@l+_=x^#7gi1y7d(qy"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['forooghteb.ir']
 
 
 # Application definition
@@ -84,14 +83,14 @@ WSGI_APPLICATION = "MEPBE.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv(
-            'DATABASE_URL',
-            f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
-        ),
-        conn_max_age=600,
-        ssl_require=False 
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'okyrnzwj_Mebedb',
+        'USER': 'okyrnzwj_MedicalEuser',
+        'PASSWORD': 'mjavad2905410',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
 
 

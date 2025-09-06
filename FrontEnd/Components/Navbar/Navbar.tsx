@@ -5,7 +5,7 @@ import Button from "../buttuns";
 import Container from "../Container";
 import Image from "next/image";
 import logo from "../../public/LogoWeb.jpg";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname} from "next/navigation";
 import { AppContext } from "@/Context/AppContext";
 import { useTheme } from "next-themes";
 import ProfileMenu from "./Avatar";
@@ -14,8 +14,7 @@ import SmoothButton from "../SmoothButtun";
 
 function Navbar() {
   const path = usePathname();
-  const router = useRouter();
-  const { SetLogin, SetIsLogin, isLogin } = useContext(AppContext);
+  const {isLogin } = useContext(AppContext);
   const { resolvedTheme, setTheme } = useTheme();
   const [themePersian, SetThemePersian] = useState<string>("روشن");
 
@@ -39,24 +38,6 @@ function Navbar() {
   const toggleNav = () => {
     SetIsNav(!isNav);
   };
-  const scrollSmooth = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const LoginOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refresh");
-    localStorage.removeItem("username");
-    localStorage.removeItem("Email");
-
-    SetLogin("");
-    SetIsLogin(false);
-    router.push("/login");
-  };
-
   const SaveTheme = () => {
     setTheme(resolvedTheme === "light" ? "dark" : "light");
     SetThemePersian(resolvedTheme === "light" ? "تاریک" : "روشن");

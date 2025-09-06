@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 
 export default function ProfileMenu() {
   const { Login, Emails, SetLogin, SetIsLogin } = useContext(AppContext);
-  const { setTheme, resolvedTheme, theme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [themePersian, SetThemePersian] = useState<string>("روشن");
   const [open, setOpen] = useState(false);
   const router = useRouter();
