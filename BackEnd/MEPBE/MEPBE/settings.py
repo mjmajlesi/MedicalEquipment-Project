@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-@1d^plknc3q+c=mm#bqf53tpx!0&2t0p@l+_=x^#7gi1y7d(qy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['forooghteb.ir']
+ALLOWED_HOSTS = ['forooghteb.ir' ,'www.forooghteb.ir']
 
 
 # Application definition
@@ -58,6 +58,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 
 ]
+
+MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware", "whitenoise.middleware.WhiteNoiseMiddleware"] + MIDDLEWARE
 
 ROOT_URLCONF = "MEPBE.urls"
 
@@ -129,7 +131,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+FORCE_SCRIPT_NAME = "/api"
+STATIC_URL = "/api/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -161,7 +164,7 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = ["login.backends.EmailBackend"]
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/api/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Products/media')
 
 CORS_ALLOWED_ORIGINS = [
