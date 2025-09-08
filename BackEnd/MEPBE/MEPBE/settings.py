@@ -146,7 +146,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # settings.py
 AUTH_USER_MODEL = "login.User"
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+# فقط دامین اصلی مجاز است
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://forooghteb.ir",
+    "https://www.forooghteb.ir",
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -171,10 +177,9 @@ AUTHENTICATION_BACKENDS = ["login.backends.EmailBackend"]
 MEDIA_URL = "/api/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Products/media')
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
-]
+
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://medicalequipment-project.onrender.com'
+    'https://forooghteb.ir',
+    'https://www.forooghteb.ir',
 ]

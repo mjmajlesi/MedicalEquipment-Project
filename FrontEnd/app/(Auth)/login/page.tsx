@@ -46,7 +46,7 @@ function Login() {
     SetWait(true);
     /* Fetch Users */
     const data = await fetch(
-      "https://medicalequipment-project.onrender.com/api/v1/login/",
+      "https://forooghteb.ir/api/api/v1/login/",
       {
         method: "POST",
         headers: {

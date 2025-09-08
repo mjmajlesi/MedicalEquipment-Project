@@ -11,7 +11,7 @@ interface Iparams {
 async function ProductPage(props: Iparams) {
   const { id } = await props.params;
   const res = await fetch(
-    `https://medicalequipment-project.onrender.com/api/v1/products_detail/product-${id}`
+    `https://forooghteb.ir/api/api/v1/products_detail/product-${id}`
   );
   if (!res.ok) {
     console.log(res);

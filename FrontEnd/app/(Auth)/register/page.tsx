@@ -45,7 +45,7 @@ function Register() {
     SetWait(true);
     /* Fetch Users */
     const data = await fetch(
-      "https://medicalequipment-project.onrender.com/api/v1/sign_up/",
+      "https://forooghteb.ir/api/api/v1/sign_up/",
       {
         method: "POST",
         headers: {
