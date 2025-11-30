@@ -3,8 +3,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['medicalequipment-project.onrender.com'],
-  },
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "forooghteb.ir",
+      },
+]
 }
+  }
 
 module.exports = nextConfig;
