@@ -1,27 +1,35 @@
-from .models import User
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from slugify import slugify
+
+User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = "__all__"
-        read_only_fields = ['slug']
+        fields = ["id", "username", "email", "password"]
         extra_kwargs = {
-            "password": {'write_only': True}
+            "password": {"write_only": True}
         }
-    
+
     def create(self, validated_data):
-        password = validated_data.pop("password", None)
-        if "username" in validated_data:
-            validated_data["slug"] = slugify(validated_data["username"])
-        user = User.objects.create_user(password=password, **validated_data)
+        password = validated_data.pop("password")
+        username = validated_data.get("username")
+
+        validated_data["slug"] = slugify(username)
+
+        user = User.objects.create(**validated_data)
+        user.set_password(password)
+        user.save()
+
         return user
-    
+
     def update(self, instance, validated_data):
         password = validated_data.pop("password", None)
         user = super().update(instance, validated_data)
+
         if password:
             user.set_password(password)
             user.save()
+
         return user

@@ -4,13 +4,17 @@ import django
 from pathlib import Path
 import csv
 
+# مسیر BackEnd را اضافه می‌کنیم:
 sys.path.append('/home/okyrnzwj/MedicalEquipment-Project/BackEnd')
+
+# تنظیمات Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MEPBE.settings")
 django.setup()
 
 from django.conf import settings
 from Products.models import Product
 
+# مسیر درست CSV داخل پروژه
 CSV_PATH = Path(settings.BASE_DIR) / "Products" / "media" / "details.csv"
 
 def main():
@@ -34,6 +38,7 @@ def main():
             image_filename = (row.get("image") or "").strip()
             image_filename = os.path.basename(image_filename)
 
+            # مسیر صحیح public_html/media/images
             image_path = f"images/{image_filename}" if image_filename else None
 
             slug = f"product-{index}"
