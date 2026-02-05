@@ -83,7 +83,7 @@ function Navbar() {
               className={`rounded-2xl cursor-pointer ${
                 innerWidth !== null && innerWidth < 480
                   ? "w-[70px]"
-                  : "w-[100px]"
+                  : "w-[120px]"
               }`}
               width={75}
               height={75}

@@ -35,7 +35,7 @@ function Header() {
             <div className="flex flex-wrap gap-4 mt-4">
               <Button
                 variant="dark"
-                className="px-6 py-4 rounded-xl text-[18px] font-semibold shadow-lg hover:bg-gray-300 transition"
+                className="px-6 py-4 rounded-xl text-[20px] font-semibold shadow-lg hover:bg-gray-300 transition"
                 aria-label="مشاهده محصولات"
               >
                 <Link href="/products" className="flex items-center gap-2">
@@ -44,7 +44,7 @@ function Header() {
                 </Link>
               </Button>
               <Button
-                className="px-6 py-4 rounded-xl text-[18px] not-md:hidden font-semibold bg-[#51BCBF] text-white shadow-lg hover:bg-[#3a9b9b] transition"
+                className="px-6 py-4 rounded-xl text-[20px] not-md:hidden font-semibold bg-[#51BCBF] text-white shadow-lg hover:bg-[#3a9b9b] transition"
                 aria-label="ارتباط با ما"
               >
                 <SmoothButton link="Contact">

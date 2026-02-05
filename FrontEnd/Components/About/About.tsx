@@ -30,13 +30,13 @@ function About() {
               y={10}
               className=" flex flex-col items-start gap-6 bg-theme-div-text not-md:w-full px-8 py-5 rounded-2xl "
             >
-              <ScrollDivAnime
-                text="سابقه شرکت"
-                className="text-[24px] lg:text-[28px] xl:text-[30px] font-semibold"
-                widthLeft={1}
-                widthRight={0}
-              />
-              <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-gray text-justify ">
+              <div className="flex items-center gap-4 w-full">
+                <div className="text-[24px] w-[250px] lg:text-[28px] xl:text-[30px] font-semibold">
+                  سابقه شرکت
+                </div>
+                <div className="h-0.5 w-full bg-gray-400 " />
+              </div>
+              <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-gray text-justify font-medium ">
                 <span className="bg-gradient-to-r from-[#1d1d9a] to-[#1e98d5] bg-clip-text font-semibold text-xl text-[20px]">
                   شرکت فروغ طب روناک سینا{" "}
                 </span>{" "}
@@ -49,13 +49,13 @@ function About() {
               </p>
             </AnimateDivs>
             <div className="flex flex-col items-start gap-6 bg-theme-div-text px-8 py-5 not-md:w-full  rounded-2xl">
-              <ScrollDivAnime
-                text="تاریخچه شرکت"
-                className="text-[24px] lg:text-[28px] xl:text-[30px] font-semibold"
-                widthLeft={1}
-                widthRight={0}
-              />
-              <p className="w-full text-[16px] sm:text-[18px] lg:text-[20px] text-justify text-gray">
+              <div className="flex items-center gap-4 w-full">
+                <div className="text-[24px] w-[300px] lg:text-[28px] xl:text-[30px] font-semibold">
+                  تاریخچه شرکت
+                </div>
+                <div className="h-0.5 w-full bg-gray-400 " />
+              </div>
+              <p className="w-full text-[16px] sm:text-[18px] lg:text-[20px] text-justify font-medium  text-gray">
                 بنیانگذاران شرکت فروغ طب با تجربه چند دهه فعالیت در حوزه خدمات
                 پزشکی و بیمارستانی برآن شدند تا با تاسیس شرکت فروغ طب روناک سینا
                 در سال 1398، فعالیت های خود را در مجموعه های بیمارستانی متمرکز
@@ -68,9 +68,7 @@ function About() {
           </div>
         </AnimateDivs>
       </Container>
-      <div
-        className="flex flex-col md:flex-row items-start justify-center gap-3 md:gap-5 bg-theme-div px-4 py-10 w-full mb-8 mt-12"
-      >
+      <div className="flex flex-col md:flex-row items-start justify-center gap-3 md:gap-5 bg-theme-div px-4 py-10 w-full mb-8 mt-12">
         <div className="flex items-center gap-1 flex-nowrap">
           <IoAdd size={35} color="#7FB2F3" />
           <span className="font-semibold text-[16px] md:text-[18px] transition-all duration-300 ease-in-out md:hover:text-[20px] text-black-theme">

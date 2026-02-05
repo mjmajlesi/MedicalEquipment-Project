@@ -45,7 +45,7 @@ function Register() {
     SetWait(true);
     /* Fetch Users */
     const data = await fetch(
-      "https://forooghteb.ir/api/api/v1/sign_up/",
+      "https://forooghteb.ir/backend/api/v1/sign_up/",
       {
         method: "POST",
         headers: {

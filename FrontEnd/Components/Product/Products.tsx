@@ -16,7 +16,7 @@ export interface IProducts {
 };
 
 async function Products() {
-  const res = await fetch("https://forooghteb.ir/api/api/v1/products_detail");
+  const res = await fetch("https://forooghteb.ir/backend/api/v1/products_detail");
   const data = await res.json();
 
   return (

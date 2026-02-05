@@ -46,7 +46,7 @@ function Login() {
     SetWait(true);
     /* Fetch Users */
     const data = await fetch(
-      "https://forooghteb.ir/api/api/v1/login/",
+      "https://forooghteb.ir/backend/api/v1/login/",
       {
         method: "POST",
         headers: {

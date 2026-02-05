@@ -11,7 +11,7 @@ interface Iparams {
 async function ProductPage(props: Iparams) {
   const { id } = await props.params;
   const res = await fetch(
-    `https://forooghteb.ir/api/api/v1/products_detail/product-${id}`
+    `https://forooghteb.ir/backend/api/v1/products_detail/product-${id}`
   );
   if (!res.ok) {
     console.log(res);
@@ -28,23 +28,23 @@ async function ProductPage(props: Iparams) {
   return (
     <>
       <Container>
-        <div className="flex flex-col lg:flex-row items-center justify-around h-screen">
-          <div className="flex items-center justify-center w-full lg:w-1/2">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 h-screen w-[90%]">
+          <div className="max-w-[500px] p-2 bg-[#f5f5f5] lg:w-1/2 rounded-3xl">
             <Image
               src={data.image}
               alt={data.title}
               width={350}
               height={350}
-              className="md:w-[400px] w-[300px] h-[350px] md:h-[500px] object-cover rounded-[32px]"
+              className="md:w-[500px] w-[300px] h-[350px] md:h-[500px] object-cover rounded-[32px]"
             />
           </div>
-          <div className="flex flex-col items-start gap-6 w-full ">
-            <h3 className="font-bold text-[32px] mt-5 line-clamp-1">
+          <div className="flex flex-col items-start gap-6 bg-[#f5f5f5] py-10 px-10 rounded-3xl w-full  ">
+            <h3 className="font-bold text-[40px] mt-5 line-clamp-1">
               {data.title}
             </h3>
             <span className="bg-[#3A3A41] h-[2px] w-full"></span>
 
-            <p className="text-[16px]">{data.description}</p>
+            <p className="text-[16px] md:text-xl font-medium">{data.description}</p>
           </div>
         </div>
       </Container>

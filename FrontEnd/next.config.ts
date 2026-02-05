@@ -1,10 +1,19 @@
+// next.config.ts
+
 // next.config.js
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['medicalequipment-project.onrender.com'],
-  },
-}
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "forooghteb.ir",
+        },
+      ],
+      unoptimized: true,
+      },
+  output: "standalone",
+};
 
-module.exports = nextConfig;
+export default nextConfig
