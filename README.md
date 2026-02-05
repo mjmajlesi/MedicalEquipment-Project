@@ -12,6 +12,7 @@ This project was developed for FroghTeb Ronak Sina, utilizing TypeScript and the
 - User-friendly interface with intuitive navigation
 - Secure user authentication and authorization
 - RESTful API for data management
+- change the Light / Dark mode in the navbar and changed without rerendering.
 
 ## Technologies Used
 ### frontend
