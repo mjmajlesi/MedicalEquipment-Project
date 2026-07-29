@@ -46,14 +46,8 @@ function Login() {
 
     SetWait(true);
     /* Fetch Users */
-<<<<<<< HEAD
-    const data = await fetch(
-      "https://forooghteb.ir/backend/api/v1/login/",
-      {
-=======
     try {
       const data = await fetch(apiUrl("login/"), {
->>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
         method: "POST",
         headers: {
           Accept: "application/json",

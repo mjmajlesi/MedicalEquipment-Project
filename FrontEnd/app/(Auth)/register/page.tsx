@@ -45,14 +45,8 @@ function Register() {
 
     SetWait(true);
     /* Fetch Users */
-<<<<<<< HEAD
-    const data = await fetch(
-      "https://forooghteb.ir/backend/api/v1/sign_up/",
-      {
-=======
     try {
       const data = await fetch(apiUrl("sign_up/"), {
->>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
         method: "POST",
         headers: {
           Accept: "application/json",

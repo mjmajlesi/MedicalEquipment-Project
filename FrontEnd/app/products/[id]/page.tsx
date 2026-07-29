@@ -11,13 +11,6 @@ interface Iparams {
 
 async function ProductPage(props: Iparams) {
   const { id } = await props.params;
-<<<<<<< HEAD
-  const res = await fetch(
-    `https://forooghteb.ir/backend/api/v1/products_detail/product-${id}`
-  );
-  if (!res.ok) {
-    console.log(res);
-=======
   let data: IProducts;
 
   try {
@@ -26,7 +19,6 @@ async function ProductPage(props: Iparams) {
       { cache: "no-store" }
     );
   } catch {
->>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
     return (
       <div className="h-screen flex items-center justify-center w-full">
         <h1 className="text-2xl font-semibold">

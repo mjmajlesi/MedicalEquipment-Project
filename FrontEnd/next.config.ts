@@ -18,11 +18,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "forooghteb.ir",
       },
-<<<<<<< HEAD
-]
-}
-}
-=======
       {
         protocol: "http",
         hostname: "127.0.0.1",
@@ -36,6 +31,5 @@ const nextConfig = {
     ],
   },
 };
->>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
 
 export default nextConfig

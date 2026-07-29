@@ -17,15 +17,10 @@ export interface IProducts {
 };
 
 async function Products() {
-<<<<<<< HEAD
-  const res = await fetch("https://forooghteb.ir/backend/api/v1/products_detail");
-  const data = await res.json();
-=======
   const data = await fetchJson<IProducts[]>(
     apiUrl("products_detail/"),
     { cache: "no-store" }
   );
->>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
 
   return (
     <div id="Products">
