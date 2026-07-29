@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-@1d^plknc3q+c=mm#bqf53tpx!0&2t0p@l+_=x^#7gi1y7d(qy"
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "forooghteb.ir",
@@ -93,17 +93,9 @@ WSGI_APPLICATION = "MEPBE.wsgi.application"
 # DATABASE
 # ====================
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'okyrnzwj_Mebedb',
-        'USER': 'okyrnzwj_MedicalEuser',
-        'PASSWORD': '4EkdliX7YcnZ',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        "OPTIONS": {
-            "charset": "utf8mb4",
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
-        },
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -159,8 +151,8 @@ CORS_ALLOWED_ORIGINS = [
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-STATIC_ROOT = "/home/okyrnzwj/backend/public/static"
-MEDIA_ROOT = "/home/okyrnzwj/backend/public/media"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_ROOT = BASE_DIR / "Products" / "media"
 
 
 # ====================

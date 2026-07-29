@@ -8,6 +8,7 @@ import React, { useContext, useState } from "react";
 import Pattern from "../../../public/Pattern.png";
 import AnimateDivs from "@/Components/animation/animateDivs";
 import { AppContext } from "@/Context/AppContext";
+import { apiUrl } from "@/lib/api";
 
 export interface IApi {
   message: string;
@@ -45,36 +46,43 @@ function Login() {
 
     SetWait(true);
     /* Fetch Users */
+<<<<<<< HEAD
     const data = await fetch(
       "https://forooghteb.ir/backend/api/v1/login/",
       {
+=======
+    try {
+      const data = await fetch(apiUrl("login/"), {
+>>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email: Email, password: Password }),
+      });
+      const result: IApi = await data.json();
+
+      if (result.error) {
+        SetError(result.error);
+        return;
       }
-    );
-    const result: IApi = await data.json();
 
-    if (result.error) {
-      SetError(result.error);
+      if (result.token && result.refresh) {
+        SetSuccess(true);
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("refresh", result.refresh);
+        localStorage.setItem("username", result.username);
+        localStorage.setItem("Email", Email);
+        SetLogin(result.username);
+        SetIsLogin(true);
+        SetEmails(Email);
+        router.push("/");
+      }
+    } catch {
+      SetError("ارتباط با سرور برقرار نشد. مطمئن شوید بک‌اند در حال اجرا است.");
+    } finally {
       SetWait(false);
-      return;
-    }
-
-    if (result.token && result.refresh) {
-      SetWait(false);
-      SetSuccess(true);
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("refresh", result.refresh);
-      localStorage.setItem("username", result.username);
-      localStorage.setItem("Email", Email);
-      SetLogin(result.username);
-      SetIsLogin(true);
-      SetEmails(Email);
-      router.push("/");
     }
   };
 

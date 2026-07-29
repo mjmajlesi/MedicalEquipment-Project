@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from slugify import slugify
 
 User = get_user_model()
 
@@ -14,9 +13,6 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         password = validated_data.pop("password")
-        username = validated_data.get("username")
-
-        validated_data["slug"] = slugify(username)
 
         user = User.objects.create(**validated_data)
         user.set_password(password)

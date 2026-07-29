@@ -9,6 +9,7 @@ import AnimateDivs from "@/Components/animation/animateDivs";
 import { useRouter } from "next/navigation";
 import { IApi } from "../login/page";
 import { AppContext } from "@/Context/AppContext";
+import { apiUrl } from "@/lib/api";
 
 function Register() {
   const { SetLogin, SetIsLogin, SetEmails } = useContext(AppContext);
@@ -44,9 +45,14 @@ function Register() {
 
     SetWait(true);
     /* Fetch Users */
+<<<<<<< HEAD
     const data = await fetch(
       "https://forooghteb.ir/backend/api/v1/sign_up/",
       {
+=======
+    try {
+      const data = await fetch(apiUrl("sign_up/"), {
+>>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -57,27 +63,29 @@ function Register() {
           email: Email,
           password: Password,
         }),
+      });
+      const result: IApi = await data.json();
+
+      if (result.error) {
+        SetError(result.error);
+        return;
       }
-    );
-    const result: IApi = await data.json();
 
-    if (result.error) {
-      SetError(result.error);
+      if (result.token && result.refresh) {
+        SetSuccess(true);
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("refresh", result.refresh);
+        localStorage.setItem("username", result.username);
+        localStorage.setItem("Email", Email);
+        SetLogin(result.username);
+        SetIsLogin(true);
+        SetEmails(Email);
+        router.push("/");
+      }
+    } catch {
+      SetError("ارتباط با سرور برقرار نشد. مطمئن شوید بک‌اند در حال اجرا است.");
+    } finally {
       SetWait(false);
-      return;
-    }
-
-    if (result.token && result.refresh) {
-      SetWait(false);
-      SetSuccess(true);
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("refresh", result.refresh);
-      localStorage.setItem("username", result.username);
-      localStorage.setItem("Email", Email);
-      SetLogin(result.username);
-      SetIsLogin(true);
-      SetEmails(Email);
-      router.push("/");
     }
   };
 

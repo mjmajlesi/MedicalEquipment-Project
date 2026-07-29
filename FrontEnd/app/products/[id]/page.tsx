@@ -2,6 +2,7 @@ import Container from "@/Components/Container";
 import { IProducts } from "@/Components/Product/Products";
 import Image from "next/image";
 import React from "react";
+import { apiUrl, fetchJson } from "@/lib/api";
 
 interface Iparams {
   params: Promise<{ id: string }>;
@@ -10,11 +11,22 @@ interface Iparams {
 
 async function ProductPage(props: Iparams) {
   const { id } = await props.params;
+<<<<<<< HEAD
   const res = await fetch(
     `https://forooghteb.ir/backend/api/v1/products_detail/product-${id}`
   );
   if (!res.ok) {
     console.log(res);
+=======
+  let data: IProducts;
+
+  try {
+    data = await fetchJson<IProducts>(
+      apiUrl(`products_detail/${id}/`),
+      { cache: "no-store" }
+    );
+  } catch {
+>>>>>>> e7dcd91 (fix local development setup and frontend-backend integration)
     return (
       <div className="h-screen flex items-center justify-center w-full">
         <h1 className="text-2xl font-semibold">
@@ -23,7 +35,6 @@ async function ProductPage(props: Iparams) {
       </div>
     );
   }
-  const data: IProducts = await res.json();
 
   return (
     <>

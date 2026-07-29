@@ -16,7 +16,7 @@ def products_detail_list(request):
 @permission_classes([AllowAny])
 def products_detail_page(request, slug):
     try:
-        product = Product.objects.get(slug=slug)
+        product = Product.objects.get(pk=slug) if slug.isdigit() else Product.objects.get(slug=slug)
         serializer = ProductsdetailsSerializer(product, context={"request" : request})
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Product.DoesNotExist:
