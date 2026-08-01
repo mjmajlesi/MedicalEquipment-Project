@@ -7,7 +7,6 @@ __pycache__/
 venv/
 .venv/
 env/
-venv-old/
 
 # Local environment variables and secrets
 .env
@@ -34,6 +33,15 @@ staticfiles/
 # Git metadata
 .git/
 .gitignore
+
+.vscode/
+.idea/
+
+*.zip
+*.tar
+*.gz
+
+data_final.json
 
 # Operating system files
 .DS_Store
