@@ -1,17 +1,18 @@
-// next.config.ts
+import type { NextConfig } from "next";
 
-// next.config.js
+const backendInternalUrl =
+  process.env.BACKEND_INTERNAL_URL ?? "http://127.0.0.1:8000";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
         source: "/backend-api/:path*",
-        destination: "http://127.0.0.1:8000/api/v1/:path*",
+        destination: `${backendInternalUrl}/api/v1/:path*`,
       },
     ];
   },
+
   images: {
     remotePatterns: [
       {
@@ -28,8 +29,13 @@ const nextConfig = {
         hostname: "localhost",
         port: "8000",
       },
+      {
+        protocol: "http",
+        hostname: "backend",
+        port: "8000",
+      },
     ],
   },
 };
 
-export default nextConfig
+export default nextConfig;
