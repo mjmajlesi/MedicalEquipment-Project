@@ -3,7 +3,7 @@ name: Sync Production VPS
 on:
   push:
     branches:
-      - main
+      - docker-compose
 
 permissions:
   contents: read
