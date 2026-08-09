@@ -1,17 +1,22 @@
-FROM node:22-alpine AS dependencies
+FROM node:20-alpine AS dependencies
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm config set fetch-retries 5 \
+    && npm config set fetch-retry-mintimeout 20000 \
+    && npm config set fetch-retry-maxtimeout 120000 \
+    && npm config set fetch-timeout 300000 \
+    && npm ci --no-audit --no-fund
 
 
-FROM node:22-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
 COPY --from=dependencies /app/node_modules ./node_modules
+
 COPY . .
 
 ARG BACKEND_INTERNAL_URL=http://127.0.0.1:8000
@@ -23,7 +28,9 @@ ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
 RUN npm run build
 
 
-FROM node:22-alpine AS runner
+FROM node:20-alpine AS runner
+
+WORKDIR /app
 
 ENV NODE_ENV=production
 
