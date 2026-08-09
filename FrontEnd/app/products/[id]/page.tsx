@@ -3,7 +3,6 @@ import { IProducts } from "@/Components/Product/Products";
 import Image from "next/image";
 import React from "react";
 import { apiUrl, fetchJson, publicMediaUrl } from "@/lib/api";
-import { publicMediaUrl } from "@/lib/api";
 
 interface Iparams {
   params: Promise<{ id: string }>;
