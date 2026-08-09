@@ -2,7 +2,7 @@ import Container from "@/Components/Container";
 import { IProducts } from "@/Components/Product/Products";
 import Image from "next/image";
 import React from "react";
-import { apiUrl, fetchJson } from "@/lib/api";
+import { apiUrl, fetchJson, publicMediaUrl } from "@/lib/api";
 
 interface Iparams {
   params: Promise<{ id: string }>;
@@ -34,7 +34,7 @@ async function ProductPage(props: Iparams) {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-16 h-screen w-[90%]">
           <div className="max-w-[500px] p-2 bg-[#f5f5f5] lg:w-1/2 rounded-3xl">
             <Image
-              src={data.image}
+              src={publicMediaUrl(data.image)}
               alt={data.title}
               width={350}
               height={350}
