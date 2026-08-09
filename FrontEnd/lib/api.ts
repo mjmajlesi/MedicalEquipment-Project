@@ -1,11 +1,37 @@
+const serverApiBaseUrl = `${
+  process.env.BACKEND_INTERNAL_URL ?? "http://127.0.0.1:8000"
+}/api/v1`;
+
+const browserApiBaseUrl =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "/backend-api";
+
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ??
-  (typeof window === "undefined"
-    ? "http://127.0.0.1:8000/api/v1"
-    : "/backend-api");
+  typeof window === "undefined"
+    ? serverApiBaseUrl
+    : browserApiBaseUrl;
 
 export function apiUrl(path: string): string {
   return `${API_BASE_URL}/${path.replace(/^\/+/, "")}`;
+}
+
+export function publicMediaUrl(url: string): string {
+  if (!url) return url;
+
+  if (url.startsWith("http://backend:8000/media/")) {
+    return url.replace(
+      "http://backend:8000/media/",
+      "https://forooghteb.ir/media/"
+    );
+  }
+
+  if (url.startsWith("http://127.0.0.1:8000/media/")) {
+    return url.replace(
+      "http://127.0.0.1:8000/media/",
+      "https://forooghteb.ir/media/"
+    );
+  }
+
+  return url;
 }
 
 export async function fetchJson<T>(
@@ -13,6 +39,7 @@ export async function fetchJson<T>(
   init?: RequestInit
 ): Promise<T> {
   const response = await fetch(input, init);
+
   const contentType = response.headers.get("content-type") ?? "";
 
   if (!response.ok) {
