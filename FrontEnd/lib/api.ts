@@ -14,11 +14,32 @@ export function apiUrl(path: string): string {
   return `${API_BASE_URL}/${path.replace(/^\/+/, "")}`;
 }
 
+export function publicMediaUrl(url: string): string {
+  if (!url) return url;
+
+  if (url.startsWith("http://backend:8000/media/")) {
+    return url.replace(
+      "http://backend:8000/media/",
+      "https://forooghteb.ir/media/"
+    );
+  }
+
+  if (url.startsWith("http://127.0.0.1:8000/media/")) {
+    return url.replace(
+      "http://127.0.0.1:8000/media/",
+      "https://forooghteb.ir/media/"
+    );
+  }
+
+  return url;
+}
+
 export async function fetchJson<T>(
   input: string,
   init?: RequestInit
 ): Promise<T> {
   const response = await fetch(input, init);
+
   const contentType = response.headers.get("content-type") ?? "";
 
   if (!response.ok) {

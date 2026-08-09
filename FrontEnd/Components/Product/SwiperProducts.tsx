@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import Link from "next/link";
 import { IProduct } from "./Product";
+import { publicMediaUrl } from "@/lib/api";
 
 function SwiperProducts({ products , id = 0 }: IProduct) {
   return (
@@ -26,7 +27,7 @@ function SwiperProducts({ products , id = 0 }: IProduct) {
             <Link href={`/products/${product.id}`}>
               <div className="relative w-[330px] h-[500px] rounded-[22px] bg-[#f2f2f7] px-2.5 pt-2.5 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
                 <Image
-                  src={product.image}
+                  src={publicMediaUrl(product.image)}
                   alt={product.title}
                   width={240}
                   height={260}

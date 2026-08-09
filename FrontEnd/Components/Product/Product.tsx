@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { IProducts } from "./Products";
+import { publicMediaUrl } from "@/lib/api";
 
 export interface IProduct {
   id? : number;
@@ -19,7 +20,7 @@ async function Product({id = 0 , products} : IProduct) {
               <div
                 className="relative w-[280px] sm:w-[362px] h-[450px] sm:h-[500px] lg:h-[500px] rounded-[22px] bg-[#f2f2f7] px-4 pt-4 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
                 <Image
-                src={product.image}
+                src={publicMediaUrl(product.image)}
                 alt={product.title}
                 width={300}
                 height={300}
