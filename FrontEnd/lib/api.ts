@@ -54,3 +54,29 @@ export async function fetchJson<T>(
 
   return response.json() as Promise<T>;
 }
+
+/* Refreshes the JWT access token once using the stored refresh token.
+   Returns the new access token, or null if the session can't be renewed. */
+export async function refreshAccessToken(): Promise<string | null> {
+  const refreshToken = localStorage.getItem("refresh");
+  if (!refreshToken) return null;
+
+  try {
+    const data = await fetchJson<{ access?: string }>(
+      apiUrl("token/refresh/"),
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ refresh: refreshToken }),
+      }
+    );
+
+    if (data.access) {
+      localStorage.setItem("token", data.access);
+      return data.access;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}

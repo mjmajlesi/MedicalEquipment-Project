@@ -26,14 +26,20 @@ function SwiperProducts({ products , id = 0 }: IProduct) {
           <SwiperSlide key={product.id} className="flex justify-center">
             <Link href={`/products/${product.id}`}>
               <div className="relative w-[330px] h-[500px] rounded-[22px] bg-[#f2f2f7] px-2.5 pt-2.5 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
-                <Image
-                  src={publicMediaUrl(product.image)}
-                  alt={product.title}
-                  width={240}
-                  height={260}
-                  priority
-                  className="w-full h-[300px] lg:h-[350px] object-cover rounded-[12px]"
-                />
+                {product.image ? (
+                  <Image
+                    src={publicMediaUrl(product.image)}
+                    alt={product.title}
+                    width={240}
+                    height={260}
+                    priority
+                    className="w-full h-[300px] lg:h-[350px] object-cover rounded-[12px]"
+                  />
+                ) : (
+                  <div className="w-full h-[300px] lg:h-[350px] flex items-center justify-center rounded-[12px] bg-[#e8e8e8] text-[#9a9a9a]">
+                    تصویری موجود نیست
+                  </div>
+                )}
                 <div className="flex flex-col gap-4">
                   <h3 className="font-bold text-gray-800 text-[20px] lg:text-[24px] mt-5 line-clamp-1">
                     {product.title}
