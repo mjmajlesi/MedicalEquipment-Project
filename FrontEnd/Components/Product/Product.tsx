@@ -19,14 +19,20 @@ async function Product({id = 0 , products} : IProduct) {
             <Link href={`/products/${product.id}`} key={product.id}>
               <div
                 className="relative w-[280px] sm:w-[362px] h-[450px] sm:h-[500px] lg:h-[500px] rounded-[22px] bg-[#f2f2f7] px-4 pt-4 shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 hover:shadow-gray-500/50 cursor-pointer">
-                <Image
-                src={publicMediaUrl(product.image)}
-                alt={product.title}
-                width={300}
-                height={300}
-                priority
-                className="sm:w-[330px] w-[260px] sm:h-[330px] h-[300px] lg:h-[350px]  object-cover rounded-[12px]"
-              />
+                {product.image ? (
+                  <Image
+                  src={publicMediaUrl(product.image)}
+                  alt={product.title}
+                  width={300}
+                  height={300}
+                  priority
+                  className="sm:w-[330px] w-[260px] sm:h-[330px] h-[300px] lg:h-[350px]  object-cover rounded-[12px]"
+                />
+                ) : (
+                  <div className="sm:w-[330px] w-[260px] sm:h-[330px] h-[300px] lg:h-[350px] flex items-center justify-center rounded-[12px] bg-[#e8e8e8] text-[#9a9a9a]">
+                    تصویری موجود نیست
+                  </div>
+                )}
               <div className="flex flex-col gap-4">
                 <h3 className="font-bold text-gray-800 text-[20px] lg:text-[24px] mt-5 line-clamp-1">
                   {product.title}

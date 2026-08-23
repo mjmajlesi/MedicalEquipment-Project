@@ -33,13 +33,19 @@ async function ProductPage(props: Iparams) {
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-center gap-16 h-screen w-[90%]">
           <div className="max-w-[500px] p-2 bg-[#f5f5f5] lg:w-1/2 rounded-3xl">
-            <Image
-              src={publicMediaUrl(data.image)}
-              alt={data.title}
-              width={350}
-              height={350}
-              className="md:w-[500px] w-[300px] h-[350px] md:h-[500px] object-cover rounded-[32px]"
-            />
+            {data.image ? (
+              <Image
+                src={publicMediaUrl(data.image)}
+                alt={data.title}
+                width={350}
+                height={350}
+                className="md:w-[500px] w-[300px] h-[350px] md:h-[500px] object-cover rounded-[32px]"
+              />
+            ) : (
+              <div className="md:w-[500px] w-[300px] h-[350px] md:h-[500px] flex items-center justify-center rounded-[32px] bg-[#e8e8e8] text-[#9a9a9a]">
+                تصویری موجود نیست
+              </div>
+            )}
           </div>
           <div className="flex flex-col items-start gap-6 bg-[#f5f5f5] py-10 px-10 rounded-3xl w-full  ">
             <h3 className="font-bold text-[40px] mt-5 line-clamp-1">

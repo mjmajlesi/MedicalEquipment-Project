@@ -2,6 +2,7 @@
 import { AppContext } from "@/Context/AppContext";
 import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
+import { refreshAccessToken } from "@/lib/api";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const [Login, SetLogin] = useState<string>("");
@@ -17,6 +18,9 @@ function Layout({ children }: { children: React.ReactNode }) {
       SetIsLogin(true);
       SetLogin(savedUsername);
       SetEmails(savedEmail);
+
+      // Renew the short-lived access token so the session stays valid.
+      refreshAccessToken();
     }
   }, []);
 

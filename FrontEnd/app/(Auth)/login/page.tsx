@@ -28,14 +28,15 @@ function Login() {
   const [Wait, SetWait] = useState<boolean>(false);
   const router = useRouter();
 
-  const LoginUser = async () => {
+  const LoginUser = async (e: React.FormEvent) => {
+    e.preventDefault();
     /* Controls errors */
     SetError(null); // Reset error state
     if (!Email || !Password) {
       SetError("لطفا ایمیل و رمز عبور خود را وارد کنید.");
       return;
     }
-    if (!Email.includes("@gmail.com")) {
+    if (!/^\S+@\S+\.\S+$/.test(Email)) {
       SetError("لطفا ایمیل معتبر وارد کنید.");
       return;
     }
@@ -94,8 +95,15 @@ function Login() {
           <span className="font-bold text-3xl md:text-4xl text-center ">
             صفحه ورود
           </span>
-          <div className=" flex items-center md:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
+          <form
+            onSubmit={LoginUser}
+            className=" flex items-center md:py-12 xl:px-8 py-8 px-6 flex-col gap-4"
+          >
+            <label htmlFor="login-email" className="sr-only">
+              ایمیل
+            </label>
             <input
+              id="login-email"
               type="email"
               placeholder="ایمیل"
               name="Email"
@@ -107,7 +115,11 @@ function Login() {
                   : " border-3 border-emerald-900"
               }`}
             />
+            <label htmlFor="login-password" className="sr-only">
+              رمز عبور
+            </label>
             <input
+              id="login-password"
               type="password"
               placeholder="رمز عبور"
               required
@@ -123,7 +135,6 @@ function Login() {
               className="p-2 bg-[#2f3538] rounded-[8px] h-[55px] w-full"
               variant="login"
               type="submit"
-              onClick={LoginUser}
             >
               ورود
             </Button>
@@ -142,6 +153,7 @@ function Login() {
                 لطفا کمی صبر کنید...
               </div>
             )}
+          </form>
             <p className="p-2">
               هنوز ثبت نام نکردی؟
               <Link
@@ -152,7 +164,6 @@ function Login() {
                 ثبت نام
               </Link>
             </p>
-          </div>
         </AnimateDivs>
       </div>
     </Container>
