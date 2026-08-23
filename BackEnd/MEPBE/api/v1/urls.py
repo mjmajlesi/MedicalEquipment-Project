@@ -10,5 +10,6 @@ urlpatterns = [
     path("login", login_page),
     path("products_detail/", products_detail_list, name="products_detail_list"),
     path("products_detail/<slug:slug>/", products_detail_page, name="products_detail_page"),
-    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh")
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("token/refresh", TokenRefreshView.as_view()),
 ]

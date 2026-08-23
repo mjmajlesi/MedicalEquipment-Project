@@ -48,7 +48,7 @@ function Login() {
     SetWait(true);
     /* Fetch Users */
     try {
-      const data = await fetch(apiUrl("login/"), {
+      const data = await fetch(apiUrl("login"), {
         method: "POST",
         headers: {
           Accept: "application/json",

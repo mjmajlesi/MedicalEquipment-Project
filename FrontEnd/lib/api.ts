@@ -63,7 +63,7 @@ export async function refreshAccessToken(): Promise<string | null> {
 
   try {
     const data = await fetchJson<{ access?: string }>(
-      apiUrl("token/refresh/"),
+      apiUrl("token/refresh"),
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
