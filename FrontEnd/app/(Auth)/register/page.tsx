@@ -47,7 +47,7 @@ function Register() {
     SetWait(true);
     /* Fetch Users */
     try {
-      const data = await fetch(apiUrl("sign_up/"), {
+      const data = await fetch(apiUrl("sign_up"), {
         method: "POST",
         headers: {
           Accept: "application/json",
