@@ -23,14 +23,15 @@ function Register() {
   const [Wait, SetWait] = useState<boolean>(false);
   const router = useRouter();
 
-  const LoginUser = async () => {
+  const LoginUser = async (e: React.FormEvent) => {
+    e.preventDefault();
     /* Controls errors */
     SetError(null); // Reset error state
     if (!Email || !Password || !Username) {
       SetError("لطفا نام کاربری و ایمیل و رمز عبور خود را وارد کنید.");
       return;
     }
-    if (!Email.includes("@gmail.com")) {
+    if (!/^\S+@\S+\.\S+$/.test(Email)) {
       SetError("لطفا ایمیل معتبر وارد کنید.");
       return;
     }
@@ -97,8 +98,15 @@ function Register() {
           <span className="font-bold text-3xl text-center ">
             صفحه ثبت نام
           </span>
-          <div className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4">
+          <form
+            onSubmit={LoginUser}
+            className=" flex items-center xl:py-12 xl:px-8 py-8 px-6 flex-col gap-4"
+          >
+            <label htmlFor="register-username" className="sr-only">
+              نام کاربری
+            </label>
             <input
+              id="register-username"
               type="text"
               placeholder="نام کاربری(فارسی)"
               name="username"
@@ -110,7 +118,11 @@ function Register() {
                   : " border-3 border-emerald-900"
               }`}
             />
+            <label htmlFor="register-email" className="sr-only">
+              ایمیل
+            </label>
             <input
+              id="register-email"
               type="email"
               placeholder="ایمیل"
               name="Email"
@@ -122,7 +134,11 @@ function Register() {
                   : " border-3 border-emerald-900"
               }`}
             />
+            <label htmlFor="register-password" className="sr-only">
+              رمز عبور
+            </label>
             <input
+              id="register-password"
               type="password"
               placeholder="رمز عبور"
               required
@@ -134,7 +150,11 @@ function Register() {
                   : " border-3 border-emerald-900"
               }`}
             />
+            <label htmlFor="register-confirm" className="sr-only">
+              تایید رمز عبور
+            </label>
             <input
+              id="register-confirm"
               type="password"
               placeholder="تایید رمز عبور"
               required
@@ -150,7 +170,6 @@ function Register() {
               className="p-2 bg-[#2f3538] rounded-[8px] h-[55px] w-full"
               variant="login"
               type="submit"
-              onClick={LoginUser}
             >
               ثبت نام
             </Button>
@@ -169,6 +188,7 @@ function Register() {
                 لطفا کمی صبر کنید...
               </div>
             )}
+          </form>
             <p className="p-2">
               قبلا ثبت نام کردی؟
               <Link
@@ -179,7 +199,6 @@ function Register() {
                 ورود
               </Link>
             </p>
-          </div>
         </AnimateDivs>
       </div>
     </Container>
