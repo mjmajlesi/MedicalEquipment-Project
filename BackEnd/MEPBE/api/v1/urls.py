@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import login_page, sign_up_page
+from .views import health, login_page, sign_up_page
 from .pd_api.views import products_detail_page, products_detail_list
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
+    path("health/", health, name="health"),
     path("sign_up/", sign_up_page, name="sign_up_page"),
     path("sign_up", sign_up_page),
     path("login/", login_page, name="login_page"),

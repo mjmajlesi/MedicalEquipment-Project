@@ -4,11 +4,23 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate, login
-from django.db import IntegrityError
+from django.db import DatabaseError, IntegrityError, connection
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
 from django.contrib.auth import get_user_model
 from login.serializers import UserSerializer
 
 User = get_user_model()
+
+@require_GET
+def health(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+    except DatabaseError:
+        return JsonResponse({"status": "error"}, status=503)
+
+    return JsonResponse({"status": "ok"})
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
